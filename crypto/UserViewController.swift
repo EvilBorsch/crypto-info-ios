@@ -3,7 +3,7 @@ import UIKit
 class UserViewController: UIViewController {
         
     @IBOutlet weak var label: UILabel!
-    var user:User=User(name: "user")
+    var user:User=User(name: "user",email:"kek@kke.ru")
     
 
     func userContoller(){
@@ -14,7 +14,8 @@ class UserViewController: UIViewController {
             label.text="Типа с сервера прислались хорошие данные и тут будем заполнять профайл"
         }
     }
-    // TODO выделить регистрацию и логин в отдельный сториборд
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         userContoller()
