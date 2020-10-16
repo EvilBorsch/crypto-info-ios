@@ -14,6 +14,7 @@
 		919DD77525399C920030B3E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 919DD77425399C920030B3E1 /* Assets.xcassets */; };
 		919DD77825399C920030B3E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 919DD77625399C920030B3E1 /* LaunchScreen.storyboard */; };
 		919DD7822539ACAA0030B3E1 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DD7812539ACAA0030B3E1 /* UserViewController.swift */; };
+		919DD78A2539BAF70030B3E1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DD7892539BAF70030B3E1 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		919DD77725399C920030B3E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		919DD77925399C920030B3E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		919DD7812539ACAA0030B3E1 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		919DD7892539BAF70030B3E1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				919DD77625399C920030B3E1 /* LaunchScreen.storyboard */,
 				919DD77925399C920030B3E1 /* Info.plist */,
 				919DD7812539ACAA0030B3E1 /* UserViewController.swift */,
+				919DD7892539BAF70030B3E1 /* UserModel.swift */,
 			);
 			path = crypto;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				919DD77025399C8F0030B3E1 /* ViewController.swift in Sources */,
 				919DD7822539ACAA0030B3E1 /* UserViewController.swift in Sources */,
 				919DD76C25399C8F0030B3E1 /* AppDelegate.swift in Sources */,
+				919DD78A2539BAF70030B3E1 /* UserModel.swift in Sources */,
 				919DD76E25399C8F0030B3E1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
