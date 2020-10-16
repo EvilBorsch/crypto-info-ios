@@ -36,14 +36,13 @@
         <!--Trade-->
         <scene sceneID="k5h-FT-BS8">
             <objects>
-                <viewController id="ucz-k6-VPN" sceneMemberID="viewController">
+                <viewController title="Trade" id="ucz-k6-VPN" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Yc-Sp-SSP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="trade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVa-Hs-ofa">
-                                <rect key="frame" x="130" y="263" width="41" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="trade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVa-Hs-ofa">
+                                <rect key="frame" x="187" y="438" width="40.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -51,12 +50,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4pW-0n-GIz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zVa-Hs-ofa" firstAttribute="centerX" secondItem="5Yc-Sp-SSP" secondAttribute="centerX" id="ZN6-yj-ark"/>
+                            <constraint firstItem="zVa-Hs-ofa" firstAttribute="centerY" secondItem="5Yc-Sp-SSP" secondAttribute="centerY" id="hwa-iE-0DL"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Trade" image="coloncurrencysign.circle" catalog="system" id="nYp-ce-Lnd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6o-61-ZGA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="678"/>
+            <point key="canvasLocation" x="1534.7826086956522" y="677.67857142857144"/>
         </scene>
         <!--Home-->
         <scene sceneID="yTq-Xi-khd">
@@ -83,6 +86,34 @@
             </objects>
             <point key="canvasLocation" x="1535" y="-654"/>
         </scene>
+        <!--User-->
+        <scene sceneID="dh1-ij-pdZ">
+            <objects>
+                <viewController title="User" id="c8o-eg-q0h" customClass="UserViewController" customModule="crypto" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Knb-1Y-GNa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M19-YS-YcD">
+                                <rect key="frame" x="168" y="281" width="62" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OoH-zW-Ccx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="User" image="person" catalog="system" id="cAf-En-2Ih"/>
+                    <connections>
+                        <outlet property="label" destination="M19-YS-YcD" id="P1d-5s-c8N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xi8-8X-Nyk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-420.28985507246381" y="-280.58035714285711"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zdf-Gq-RAW">
             <objects>
@@ -96,6 +127,7 @@
                         <segue destination="BmH-5B-856" kind="relationship" relationship="viewControllers" id="idz-YJ-u34"/>
                         <segue destination="5z2-nK-OTx" kind="relationship" relationship="viewControllers" id="isP-PL-Twu"/>
                         <segue destination="ucz-k6-VPN" kind="relationship" relationship="viewControllers" id="xaF-IB-mPN"/>
+                        <segue destination="c8o-eg-q0h" kind="relationship" relationship="viewControllers" id="b1I-pK-o79"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRW-Tq-xCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -106,6 +138,7 @@
     <resources>
         <image name="coloncurrencysign.circle" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
