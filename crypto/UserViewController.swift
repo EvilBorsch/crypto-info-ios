@@ -11,7 +11,7 @@ class UserViewController: UIViewController {
         if (!isExist){
             showPage(presenter:self,viewId: "sign_in",storyBoardName: "ProfileStoryBoard")
         }else{
-            label.text="Типа с сервера прислались хорошие данные и тут будем заполнять профайл"
+            showPage(presenter: self, viewId: "profile",storyBoardName: "ProfileStoryBoard")
         }
     }
     

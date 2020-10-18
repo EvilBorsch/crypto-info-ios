@@ -16,7 +16,7 @@ class User  {
         self.email=email
         }
     func GetFromServer()->Bool{
-        return false // not exist
+        return true // not exist
     }
     
 }
