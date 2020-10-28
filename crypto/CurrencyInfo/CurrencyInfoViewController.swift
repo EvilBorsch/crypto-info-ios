@@ -9,9 +9,36 @@ import UIKit
 
 class CurrencyInfoViewController: UIViewController {
 
+    
+    @IBOutlet weak var ChangeStackView: UIStackView!
+    @IBOutlet weak var Change: UILabel!
+    @IBOutlet weak var CostStackView: UIStackView!
+    @IBOutlet weak var InfoTextView: UITextView!
+    @IBOutlet weak var CurrencyName: UILabel!
+    @IBOutlet weak var StockName: UILabel!
+    @IBOutlet weak var Cost: UILabel!
+    @IBOutlet weak var CostCurr: UILabel!
+    
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ChangeStackView.layer.cornerRadius = 15
+        CostStackView.layer.cornerRadius = 15
+        Change.layer.cornerRadius = 10
+        Change.layer.masksToBounds = true
         let cur = getCurrByName(name: "Bitcoin")
+        CurrencyName.text = cur.currencyName
+        StockName.text = cur.stockName
+        InfoTextView.text = cur.description
+        Cost.text = String(cur.cost)
+        CostCurr.text = cur.convertionCurrnecyName
+        Change.text = String(cur.changeValueInPercents) + "%"
+        if cur.didGrow {
+            Change.backgroundColor = UIColor.systemGreen
+        }
+        
         // Do any additional setup after loading the view.
     }
     
