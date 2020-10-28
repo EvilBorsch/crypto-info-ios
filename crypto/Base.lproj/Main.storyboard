@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gfC-w8-YzS">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,7 +45,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="trade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVa-Hs-ofa">
-                                <rect key="frame" x="187" y="438" width="40.5" height="20.5"/>
+                                <rect key="frame" x="186.5" y="437.5" width="41" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -137,16 +137,29 @@
                         <segue destination="5z2-nK-OTx" kind="relationship" relationship="viewControllers" id="isP-PL-Twu"/>
                         <segue destination="ucz-k6-VPN" kind="relationship" relationship="viewControllers" id="xaF-IB-mPN"/>
                         <segue destination="c8o-eg-q0h" kind="relationship" relationship="viewControllers" id="b1I-pK-o79"/>
+                        <segue destination="d2u-PC-EBE" kind="relationship" relationship="viewControllers" id="OYe-N1-wQP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRW-Tq-xCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="648" y="-293"/>
         </scene>
+        <!--CurrencyInfo-->
+        <scene sceneID="7La-ak-Rej">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CurrencyInfo" storyboardName="CurrencyInfo" referencedIdentifier="CurrencyInfo" id="d2u-PC-EBE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="CurrnecyInfoTest" image="lock.square" catalog="system" id="TdK-tj-bUq"/>
+                    <navigationItem key="navigationItem" id="Lx0-u2-zUt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f79-gA-PZB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="411" y="400"/>
+        </scene>
     </scenes>
     <resources>
         <image name="coloncurrencysign.circle" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
+        <image name="lock.square" catalog="system" width="128" height="114"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
