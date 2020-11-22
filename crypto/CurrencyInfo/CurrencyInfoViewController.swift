@@ -33,13 +33,13 @@ class CurrencyInfoViewController: UIViewController {
         StockName.text = cur.stockName
         InfoTextView.text = cur.description
         Cost.text = String(cur.cost)
-        CostCurr.text = cur.convertionCurrnecyName
+        CostCurr.text = cur.convertionCurrencyName
         Change.text = String(cur.changeValueInPercents) + "%"
         if cur.didGrow {
             Change.backgroundColor = UIColor.systemGreen
         }
         
-        // Do any additional setup after loading the view.
+       
     }
     
 

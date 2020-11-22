@@ -11,7 +11,7 @@ func getCurrByName(name: String) -> CurrencyModel {
     return CurrencyModel(currencyName: "Bitcoin",
                          stockName: "BTC",
                          cost: 38358.3,
-                         convertionCurrnecyName: "USD",
+                         convertionCurrencyName: "USD",
                          didGrow: true,
                          changeValueInPercents: 3.64,
                          description: "bitcoin info")
@@ -21,7 +21,7 @@ class CurrencyModel {
     var currencyName: String
     var stockName: String
     var cost: Double
-    var convertionCurrnecyName: String
+    var convertionCurrencyName: String
     var didGrow: Bool
     var changeValueInPercents: Double
     var description: String
@@ -29,7 +29,7 @@ class CurrencyModel {
     init(currencyName: String,
          stockName: String,
          cost: Double,
-         convertionCurrnecyName: String,
+         convertionCurrencyName: String,
          didGrow: Bool,
          changeValueInPercents: Double,
          description: String)
@@ -37,7 +37,7 @@ class CurrencyModel {
         self.currencyName = currencyName
         self.stockName = stockName
         self.cost = cost
-        self.convertionCurrnecyName = convertionCurrnecyName
+        self.convertionCurrencyName = convertionCurrencyName
         self.didGrow = didGrow
         self.changeValueInPercents = changeValueInPercents
         self.description = description
