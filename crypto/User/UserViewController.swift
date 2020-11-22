@@ -10,7 +10,9 @@ class UserViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
 
     func userContoller() {
-        let isExist = user.GetFromServer()
+        let result = user.GetFromServer()
+        let isExist = result.0
+        let message = result.1
         if !isExist {
             showPage(presenter: self, viewId: "sign_in", storyBoardName: "ProfileStoryBoard")
             return
@@ -24,11 +26,8 @@ class UserViewController: UIViewController {
         static var counter = 0
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if Holder.counter == 0 {
-            userContoller()
-        }
-        Holder.counter += 1
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userContoller()
     }
 }
