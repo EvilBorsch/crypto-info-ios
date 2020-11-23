@@ -122,6 +122,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bn4-24-yHK">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
                                                 <state key="normal" title="Sign Up"/>
+                                                <connections>
+                                                    <action selector="signUpButtonClick:" destination="fEF-c7-xUJ" eventType="touchUpInside" id="3Cv-MW-Oi7"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

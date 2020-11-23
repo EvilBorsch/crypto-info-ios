@@ -1,7 +1,7 @@
 import UIKit
 
 class UserViewController: UIViewController {
-    var user: User = User(name: "user", email: "kek@kke.ru")
+    var user: User = User(name: "", email: "")
 
     @IBOutlet var nameTextField: UITextField!
 
@@ -9,11 +9,9 @@ class UserViewController: UIViewController {
 
     @IBOutlet var emailTextField: UITextField!
 
-    func userContoller() {
-        let result = user.GetFromServer()
-        let isExist = result.0
-        let message = result.1
-        if !isExist {
+    func callback(needRegistration: Bool, message: String) {
+        print(user.email)
+        if needRegistration {
             showPage(presenter: self, viewId: "sign_in", storyBoardName: "ProfileStoryBoard")
             return
         } else {
@@ -22,12 +20,12 @@ class UserViewController: UIViewController {
         }
     }
 
-    struct Holder {
-        static var counter = 0
+    func userContoller() {
+        let result = user.GetFromServer(callback: callback)
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         userContoller()
     }
 }
