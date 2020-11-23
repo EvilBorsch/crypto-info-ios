@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gfC-w8-YzS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gfC-w8-YzS">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,12 +22,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="x9h-co-KvM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="zJa-zo-3dt" firstAttribute="centerX" secondItem="oDM-hP-SaH" secondAttribute="centerX" id="MJy-o6-IDs"/>
                             <constraint firstItem="zJa-zo-3dt" firstAttribute="centerY" secondItem="oDM-hP-SaH" secondAttribute="centerY" id="up9-Op-uih"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="x9h-co-KvM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Collection" image="star" catalog="system" id="AQ3-24-7w1"/>
                 </viewController>
@@ -52,18 +50,36 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="4pW-0n-GIz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="zVa-Hs-ofa" firstAttribute="centerX" secondItem="5Yc-Sp-SSP" secondAttribute="centerX" id="ZN6-yj-ark"/>
                             <constraint firstItem="zVa-Hs-ofa" firstAttribute="centerY" secondItem="5Yc-Sp-SSP" secondAttribute="centerY" id="hwa-iE-0DL"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4pW-0n-GIz"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Trade" image="coloncurrencysign.circle" catalog="system" id="nYp-ce-Lnd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6o-61-ZGA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1783" y="666"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Frz-JH-mat">
+            <objects>
+                <navigationController id="rmS-Aa-6cG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="AHQ-Oc-lDQ"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="60W-GJ-c8l">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BmH-5B-856" kind="relationship" relationship="rootViewController" id="XaM-TO-w0N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r7m-oX-ju9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1174" y="-1124"/>
         </scene>
         <!--Home-->
         <scene sceneID="yTq-Xi-khd">
@@ -80,8 +96,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ksc-zZ-zlp">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="769" id="p0W-Rj-RRc"/>
                                 </constraints>
@@ -140,8 +156,7 @@
                                 <sections/>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="hbA-lk-UUx"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Ksc-zZ-zlp" firstAttribute="top" secondItem="hbA-lk-UUx" secondAttribute="top" id="0Tu-US-aCt"/>
                             <constraint firstItem="hbA-lk-UUx" firstAttribute="trailing" secondItem="Ksc-zZ-zlp" secondAttribute="trailing" id="5ke-yo-CO4"/>
@@ -150,8 +165,9 @@
                             <constraint firstItem="Ksc-zZ-zlp" firstAttribute="leading" secondItem="hbA-lk-UUx" secondAttribute="leading" id="RYs-1O-Q9v"/>
                             <constraint firstAttribute="bottom" secondItem="qXz-gg-cuT" secondAttribute="bottom" id="ali-6K-D6m"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="hbA-lk-UUx"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="AHQ-Oc-lDQ"/>
+                    <navigationItem key="navigationItem" id="ueT-q1-AZH"/>
                     <connections>
                         <outlet property="tableView" destination="Ksc-zZ-zlp" id="Yt4-hR-vZd"/>
                     </connections>
@@ -194,17 +210,30 @@
                                     <constraint firstAttribute="width" constant="200" id="Qdo-6F-SM3"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhk-7Z-WIX">
+                                <rect key="frame" x="113" y="561" width="189" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="vA9-7E-iQM"/>
+                                </constraints>
+                                <state key="normal" title="Выйти"/>
+                                <connections>
+                                    <action selector="deleteCookieBtnClick:" destination="c8o-eg-q0h" eventType="touchUpInside" id="tnZ-eW-xop"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="OoH-zW-Ccx"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="uhk-7Z-WIX" firstAttribute="centerX" secondItem="Knb-1Y-GNa" secondAttribute="centerX" id="38J-aF-jsc"/>
                             <constraint firstItem="xxJ-98-1He" firstAttribute="top" secondItem="sdX-hX-GzA" secondAttribute="top" id="9Zx-SE-2p8"/>
+                            <constraint firstItem="OoH-zW-Ccx" firstAttribute="bottom" secondItem="uhk-7Z-WIX" secondAttribute="bottom" constant="179" id="GK2-18-EOm"/>
                             <constraint firstItem="OoH-zW-Ccx" firstAttribute="bottom" secondItem="sdX-hX-GzA" secondAttribute="bottom" constant="539" id="PVs-MI-C8q"/>
+                            <constraint firstItem="uhk-7Z-WIX" firstAttribute="leading" secondItem="OoH-zW-Ccx" secondAttribute="leading" constant="113" id="WaH-aL-pcO"/>
                             <constraint firstItem="xxJ-98-1He" firstAttribute="top" secondItem="OoH-zW-Ccx" secondAttribute="top" constant="105" id="d5Y-y8-oy2"/>
                             <constraint firstItem="xxJ-98-1He" firstAttribute="trailing" secondItem="Knb-1Y-GNa" secondAttribute="trailingMargin" id="j6P-Mo-0Fa"/>
                             <constraint firstItem="sdX-hX-GzA" firstAttribute="leading" secondItem="Knb-1Y-GNa" secondAttribute="leadingMargin" id="lUp-Qy-3rn"/>
                             <constraint firstItem="xxJ-98-1He" firstAttribute="leading" secondItem="sdX-hX-GzA" secondAttribute="trailing" constant="36" id="oLH-li-y6M"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="OoH-zW-Ccx"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="User" image="person" catalog="system" id="cAf-En-2Ih"/>
                     <connections>
@@ -221,17 +250,17 @@
         <scene sceneID="zdf-Gq-RAW">
             <objects>
                 <tabBarController id="gfC-w8-YzS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="X74-74-pDO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6W5-TD-OrK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BmH-5B-856" kind="relationship" relationship="viewControllers" id="idz-YJ-u34"/>
+                        <segue destination="rmS-Aa-6cG" kind="relationship" relationship="viewControllers" id="9nQ-WC-c8w"/>
                         <segue destination="5z2-nK-OTx" kind="relationship" relationship="viewControllers" id="isP-PL-Twu"/>
                         <segue destination="ucz-k6-VPN" kind="relationship" relationship="viewControllers" id="xaF-IB-mPN"/>
                         <segue destination="c8o-eg-q0h" kind="relationship" relationship="viewControllers" id="b1I-pK-o79"/>
-                        <segue destination="kql-hk-Ydo" kind="relationship" relationship="viewControllers" id="Nf6-0E-duy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRW-Tq-xCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -250,12 +279,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="coloncurrencysign.circle" catalog="system" width="128" height="121"/>
-        <image name="house" catalog="system" width="128" height="106"/>
-        <image name="person" catalog="system" width="128" height="117"/>
-        <image name="star" catalog="system" width="128" height="116"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="coloncurrencysign.circle" catalog="system" width="64" height="60"/>
+        <image name="house" catalog="system" width="64" height="54"/>
+        <image name="person" catalog="system" width="64" height="58"/>
+        <image name="star" catalog="system" width="64" height="58"/>
     </resources>
 </document>
