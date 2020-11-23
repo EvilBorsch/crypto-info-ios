@@ -9,13 +9,13 @@ import Alamofire
 import Foundation
 
 protocol CurrNetProto: AnyObject {
-    func GetCryptoByName(name: String, completion: @escaping (CurrencyModel?) -> Void)
+    func GetCryptoByName(name: String, completion: @escaping (CurrencyModel?, String?) -> Void)
 }
 
 final class CurrencyNetworkManager: CurrNetProto {
     private let baseUrl = "http://localhost:5000/api/currency"
     
-    func GetCryptoByName(name: String, completion: @escaping (CurrencyModel?) -> Void) {
+    func GetCryptoByName(name: String, completion: @escaping (CurrencyModel?, String?) -> Void) {
         AF.request("\(self.baseUrl)/get?curr_name=\(name)").responseJSON {response in
                 switch response.result {
                 case .success:
@@ -23,19 +23,20 @@ final class CurrencyNetworkManager: CurrNetProto {
                         let jsonDecoder = JSONDecoder()
                         do {
                             let model = try jsonDecoder.decode(CurrencyModel.self, from: jsonData)
-                            completion(model)
+                            completion(model, nil)
                             return
         
                         } catch let error {
                             debugPrint(error.localizedDescription)
-                            completion(nil)
+                            let dataString = String(data: jsonData, encoding: .utf8) ?? ""
+                            completion(nil, "Decode error: \(error.localizedDescription)\n Server sent: \(dataString)")
                             return
                         }
         
                     }
                 case .failure(let error):
                     debugPrint(error)
-                    completion(nil)
+                    completion(nil, "Request failure: \(error.errorDescription ?? "")")
                     return
                 }
             }
