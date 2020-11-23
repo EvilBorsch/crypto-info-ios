@@ -8,15 +8,15 @@ import UIKit
 import Foundation
 
 class HomeViewController: UIViewController {
-
-
     @IBOutlet weak var tableView: UITableView!
+    
+    var titles: [String] = ["Hello", "World"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        
-    tableView.dataSource = self
-    tableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
     }
 }
 
@@ -27,11 +27,15 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return titles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "crypto", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "crypto", for: indexPath) as? CryptoTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: titles[indexPath.row])
+        
         return cell
     }
     

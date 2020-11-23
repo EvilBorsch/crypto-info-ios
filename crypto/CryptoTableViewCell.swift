@@ -7,13 +7,14 @@
 
 import UIKit
 
+
+
 class CryptoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.text = "test"
         // Initialization code
     }
 
@@ -21,6 +22,10 @@ class CryptoTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configure(with title: String) {
+        titleLabel.text = title
     }
 
 }
