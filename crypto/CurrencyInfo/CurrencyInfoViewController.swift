@@ -18,39 +18,40 @@ class CurrencyInfoViewController: UIViewController {
     @IBOutlet weak var StockName: UILabel!
     @IBOutlet weak var Cost: UILabel!
     @IBOutlet weak var CostCurr: UILabel!
-    
-    
 
+    private var model: CurrencyModel = CurrencyModel()
+    
+    func updateModelView(){
+        CurrencyName.text = self.model.currencyName
+        StockName.text = self.model.stockName
+        InfoTextView.text = self.model.description
+        Cost.text = String(self.model.cost)
+        CostCurr.text = self.model.convertionCurrencyName
+        Change.text = String(self.model.changeValueInPercents) + "%"
+        if self.model.didGrow {
+            Change.backgroundColor = UIColor.systemGreen
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let NetworkManager = CurrencyNetworkManager.shared
+        
         ChangeStackView.layer.cornerRadius = 15
         CostStackView.layer.cornerRadius = 15
         Change.layer.cornerRadius = 10
         Change.layer.masksToBounds = true
-        let cur = getCurrByName(name: "Bitcoin")
-        CurrencyName.text = cur.currencyName
-        StockName.text = cur.stockName
-        InfoTextView.text = cur.description
-        Cost.text = String(cur.cost)
-        CostCurr.text = cur.convertionCurrencyName
-        Change.text = String(cur.changeValueInPercents) + "%"
-        if cur.didGrow {
-            Change.backgroundColor = UIColor.systemGreen
-        }
         
-       
+        NetworkManager.GetCryptoByName(name: "Bitcoin") {
+            [weak self](model) in
+            self?.model = model!
+            DispatchQueue.main.async {
+                self?.updateModelView()
+            }
+        }
+        self.updateModelView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

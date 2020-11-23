@@ -7,17 +7,7 @@
 
 import Foundation
 
-func getCurrByName(name: String) -> CurrencyModel {
-    return CurrencyModel(currencyName: "Bitcoin",
-                         stockName: "BTC",
-                         cost: 38358.3,
-                         convertionCurrencyName: "USD",
-                         didGrow: true,
-                         changeValueInPercents: 3.64,
-                         description: "bitcoin info")
-}
-
-class CurrencyModel {
+class CurrencyModel: Codable {
     var currencyName: String
     var stockName: String
     var cost: Double
@@ -25,7 +15,7 @@ class CurrencyModel {
     var didGrow: Bool
     var changeValueInPercents: Double
     var description: String
-    // Graph must be init here
+    
     init(currencyName: String,
          stockName: String,
          cost: Double,
@@ -43,5 +33,18 @@ class CurrencyModel {
         self.description = description
     }
     
+    init() {
+        self.currencyName = "Загрузка..."
+        self.stockName = "Загрузка..."
+        self.cost = 0
+        self.convertionCurrencyName = "Загрузка..."
+        self.didGrow = false
+        self.changeValueInPercents = 0
+        self.description = "Загрузка..."
+    }
+    
 }
+
+
+
 
