@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "03C76A26-5364-417C-ABDE-E1931235ECEC"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E28E012A-5291-4284-B5B6-69A09555B9DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CurrencyInfo/CurrencyBaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E28E012A-5291-4284-B5B6-69A09555B9DB - 4df6ce4a5e50972a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "crypto.CurrencyBaseViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "crypto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/farcoad/Documents/TechPark/3_sem/IOS/crypto-info-ios/CurrencyInfo/CurrencyBaseViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  uuid = "E28E012A-5291-4284-B5B6-69A09555B9DB - ff72753d0088141e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;crypto.CurrencyModel&gt;) -&gt; () in crypto.CurrencyBaseViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "crypto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/farcoad/Documents/TechPark/3_sem/IOS/crypto-info-ios/CurrencyInfo/CurrencyBaseViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "183">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
