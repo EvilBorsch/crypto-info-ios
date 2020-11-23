@@ -19,7 +19,8 @@ class CurrencyInfoViewController: UIViewController {
     @IBOutlet weak var Cost: UILabel!
     @IBOutlet weak var CostCurr: UILabel!
 
-    private var model: CurrencyModel = CurrencyModel()
+    var model: CurrencyModel = CurrencyModel()
+    
     
     func updateModelView(){
         CurrencyName.text = self.model.currencyName
@@ -37,21 +38,11 @@ class CurrencyInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let NetworkManager = CurrencyNetworkManager.shared
-        
         ChangeStackView.layer.cornerRadius = 15
         CostStackView.layer.cornerRadius = 15
         Change.layer.cornerRadius = 10
         Change.layer.masksToBounds = true
         
-        NetworkManager.GetCryptoByName(name: "Bitcoin") {
-            [weak self](model) in
-            self?.model = model!
-            DispatchQueue.main.async {
-                self?.updateModelView()
-            }
-        }
         self.updateModelView()
     }
-    
 }
