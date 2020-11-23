@@ -11,8 +11,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var cryptoModels: [CryptoTableViewCellModel] = [
-        CryptoTableViewCellModel(imageName: "", price: "18 583$", title: "Bitcoin"),
-        CryptoTableViewCellModel(imageName: "", price: "582,63$", title: "Ethereum")
+        CryptoTableViewCellModel(imageName: "bitcoin", price: "18 583$", title: "Bitcoin"),
+        CryptoTableViewCellModel(imageName: "ethereum", price: "582,63$", title: "Ethereum"),
+        CryptoTableViewCellModel(imageName: "waves", price: "8,16$", title: "Waves")
     ]
     
     override func viewDidLoad() {
