@@ -100,7 +100,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCB-nv-fFE">
-                                                    <rect key="frame" x="94" y="19" width="119" height="79"/>
+                                                    <rect key="frame" x="110" y="19" width="119" height="79"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="119" id="716-O0-LGt"/>
                                                     </constraints>
@@ -108,19 +108,29 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91A-w9-0KP">
+                                                    <rect key="frame" x="303" y="19" width="61" height="79"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="iCB-nv-fFE" firstAttribute="leading" secondItem="W2Q-ha-Kpp" secondAttribute="trailing" constant="20" id="6NJ-Sb-ExP"/>
                                                 <constraint firstItem="W2Q-ha-Kpp" firstAttribute="leading" secondItem="5b0-mO-Qzp" secondAttribute="leadingMargin" constant="12" id="BJ3-p5-cm0"/>
                                                 <constraint firstItem="W2Q-ha-Kpp" firstAttribute="leading" secondItem="5b0-mO-Qzp" secondAttribute="leadingMargin" constant="12" id="Bfl-07-idK"/>
-                                                <constraint firstItem="iCB-nv-fFE" firstAttribute="leading" secondItem="W2Q-ha-Kpp" secondAttribute="trailing" constant="4" id="DSL-2v-X9D"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="W2Q-ha-Kpp" secondAttribute="bottom" constant="8" id="aQn-CS-HpD"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="iCB-nv-fFE" secondAttribute="bottom" constant="8" id="csX-xg-agP"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="91A-w9-0KP" secondAttribute="bottom" constant="8" id="gvb-tn-y7V"/>
+                                                <constraint firstItem="91A-w9-0KP" firstAttribute="leading" secondItem="iCB-nv-fFE" secondAttribute="trailing" constant="74" id="nKV-tv-vmO"/>
                                                 <constraint firstItem="iCB-nv-fFE" firstAttribute="top" secondItem="5b0-mO-Qzp" secondAttribute="topMargin" constant="8" id="r88-sa-g8s"/>
                                                 <constraint firstItem="W2Q-ha-Kpp" firstAttribute="top" secondItem="5b0-mO-Qzp" secondAttribute="topMargin" constant="8" id="sqB-Wq-Dhb"/>
+                                                <constraint firstItem="91A-w9-0KP" firstAttribute="top" secondItem="5b0-mO-Qzp" secondAttribute="topMargin" constant="8" id="zbw-FR-Cg2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="iconImageView" destination="W2Q-ha-Kpp" id="Dec-Tj-swn"/>
+                                            <outlet property="priceLabel" destination="91A-w9-0KP" id="R7n-v1-Eaw"/>
                                             <outlet property="titleLabel" destination="iCB-nv-fFE" id="b5g-MJ-5Mu"/>
                                         </connections>
                                     </tableViewCell>

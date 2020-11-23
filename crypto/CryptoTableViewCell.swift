@@ -7,12 +7,17 @@
 
 import UIKit
 
-
+struct CryptoTableViewCellModel{
+    let imageName: String
+    let price: String
+    let title: String
+}
 
 class CryptoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,8 +29,10 @@ class CryptoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with title: String) {
-        titleLabel.text = title
+    func configure(with model: CryptoTableViewCellModel) {
+        iconImageView.image = UIImage(named: model.imageName)
+        titleLabel.text = model.title
+        priceLabel.text = model.price
     }
 
 }
