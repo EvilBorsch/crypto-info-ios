@@ -9,8 +9,11 @@ import UIKit
 
 class CryptoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        titleLabel.text = "test"
         // Initialization code
     }
 
