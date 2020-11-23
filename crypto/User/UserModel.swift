@@ -40,10 +40,10 @@ class User: Codable {
         callback(needRegistered, message)
     }
 
-    func RegisterUser(email: String, password: String, nickname: String) -> String {
+    func RegisterUser(email: String, password: String, nickname: String, callback: @escaping (String) -> Void) {
         guard let url = URL(string: BASE_URL + "api/user/add") else {
             print("url is not correct")
-            return "Internal server error"
+            return
         }
         let parameters: [String: String] = [
             "Email": email,
@@ -59,7 +59,8 @@ class User: Codable {
             switch response.result {
             case .success:
                 do {
-                    print("ok")
+                    callback("test") // TODO add message
+                    return
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
                 }
@@ -68,7 +69,5 @@ class User: Codable {
                 print("Request error: \(error.localizedDescription)")
             }
         }
-
-        return ""
     }
 }

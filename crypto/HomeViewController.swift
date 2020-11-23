@@ -34,6 +34,13 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
         return cryptoModels.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "CurrencyInfo", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CellBaseShow") as! CurrencyBaseViewController
+        vc.name = cryptoModels[indexPath.row].title
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "crypto", for: indexPath) as? CryptoTableViewCell else {
             return UITableViewCell()

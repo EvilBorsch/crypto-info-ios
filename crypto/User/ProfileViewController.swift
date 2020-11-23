@@ -12,6 +12,14 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet var signInBtn: UIButton!
 
+    func callback(data: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "main_user")
+        definesPresentationContext = true
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: false)
+    }
+
     @IBAction func signUpButtonClick(_ sender: UIButton) {
         guard let email = EmailTextField.text else {
             print("no email")
@@ -29,7 +37,7 @@ class ProfileViewController: UIViewController {
             print("no nickname")
             return
         }
-        let res = user.RegisterUser(email: email, password: password, nickname: name)
+        let res = user.RegisterUser(email: email, password: password, nickname: name, callback: callback)
         print(res)
     }
 
@@ -37,4 +45,3 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
     }
 }
-
