@@ -8,15 +8,19 @@ import UIKit
 import Foundation
 
 class HomeViewController: UIViewController {
-
-
     @IBOutlet weak var tableView: UITableView!
+    
+    var cryptoModels: [CryptoTableViewCellModel] = [
+        CryptoTableViewCellModel(imageName: "bitcoin", price: "18 583$", title: "Bitcoin"),
+        CryptoTableViewCellModel(imageName: "ethereum", price: "582,63$", title: "Ethereum"),
+        CryptoTableViewCellModel(imageName: "waves", price: "8,16$", title: "Waves")
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        
-    tableView.dataSource = self
-    tableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
     }
 }
 
@@ -27,11 +31,15 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return cryptoModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "crypto", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "crypto", for: indexPath) as? CryptoTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: cryptoModels[indexPath.row])
+        
         return cell
     }
     
