@@ -1,46 +1,54 @@
 import Alamofire
 import Foundation
+import UIKit
 
-class User: Codable {
+class UserModel: Codable {
     var name: String
     var email: String
-    init(name: String, email: String) {
-        self.name = name
+    var photo: String?
+}
+
+class User {
+    var nickname: String
+    var email: String
+    var photoImage: UIImage?
+
+    init(nickname: String, email: String) {
+        self.nickname = nickname
         self.email = email
     }
 
-    func GetFromServer(callback: @escaping (Bool, String) -> Void) {
-        var message = ""
+    func GetFromServer(callback: @escaping (Bool, String, User) -> Void) {
         guard let url = URL(string: BASE_URL + "api/user/get") else {
             print("url is not correct")
-            callback(false, "Internal Server Error")
+            callback(false, "Internal Server Error", self)
             return
         }
-        var needRegistered = false
-
         AF.request(url).responseJSON { response in
             print(response)
             switch response.result {
             case .success:
                 do {
-                    let user = try JSONDecoder().decode(User.self, from: response.data!)
-                    self.name = user.name
+                    let user = try JSONDecoder().decode(UserModel.self, from: response.data!)
+                    self.nickname = user.name
                     self.email = user.email
-                    callback(needRegistered, message)
+                    let photoUrl = user.photo ?? ""
+                    self.photoImage = getImageFromUrl(url: photoUrl)
+                    callback(false, "", self)
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
                     let dataString = String(data: response.data!, encoding: .utf8) ?? ""
-                    callback(true, dataString)
+                    callback(true, dataString, self)
                 }
 
             case let .failure(error):
                 print("Request error: \(error.localizedDescription)")
             }
         }
-        callback(needRegistered, message)
+        callback(false, "", self)
     }
 
-    func RegisterUser(email: String, password: String, nickname: String, callback: @escaping (String) -> Void) {
+    func RegisterUser(email: String, password: String, nickname: String, avatar: UIImage?, callback: @escaping (String) -> Void) {
         guard let url = URL(string: BASE_URL + "api/user/add") else {
             print("url is not correct")
             return
@@ -51,6 +59,7 @@ class User: Codable {
             "Nickname": nickname,
         ]
         var multipart = MultipartFormData()
+        multipart.append(avatar!.jpegData(compressionQuality: 0.1)!, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
         for (key, value) in parameters {
             multipart.append(value.data(using: String.Encoding.utf8)!, withName: key)
         }
@@ -59,7 +68,7 @@ class User: Codable {
             switch response.result {
             case .success:
                 do {
-                    callback("test") // TODO add message
+                    callback("test") // TODO: add message
                     return
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")

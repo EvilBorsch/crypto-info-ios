@@ -187,21 +187,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sdX-hX-GzA">
                                 <rect key="frame" x="20" y="149" width="138" height="125"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xxJ-98-1He">
-                                <rect key="frame" x="194" y="149" width="200" height="118"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="xxJ-98-1He">
+                                <rect key="frame" x="194" y="149" width="200" height="90"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PtF-OR-wsP">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdt-Rx-Mqc">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ник" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdt-Rx-Mqc">
-                                        <rect key="frame" x="0.0" y="42" width="200" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i5o-1F-Ypb">
-                                        <rect key="frame" x="0.0" y="84" width="200" height="34"/>
+                                        <rect key="frame" x="0.0" y="56" width="200" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -215,6 +210,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="73" id="vA9-7E-iQM"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="Выйти"/>
                                 <connections>
                                     <action selector="deleteCookieBtnClick:" destination="c8o-eg-q0h" eventType="touchUpInside" id="tnZ-eW-xop"/>
@@ -237,14 +233,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="User" image="person" catalog="system" id="cAf-En-2Ih"/>
                     <connections>
+                        <outlet property="ImageView" destination="sdX-hX-GzA" id="3YC-Am-yvg"/>
                         <outlet property="emailTextField" destination="i5o-1F-Ypb" id="vII-JZ-qsb"/>
-                        <outlet property="nameTextField" destination="PtF-OR-wsP" id="5th-Nr-NSe"/>
                         <outlet property="nicknameTextField" destination="mdt-Rx-Mqc" id="dL1-4J-FDB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xi8-8X-Nyk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-420.28985507246381" y="-280.58035714285711"/>
+            <point key="canvasLocation" x="-764" y="-316"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zdf-Gq-RAW">
@@ -260,12 +256,20 @@
                         <segue destination="rmS-Aa-6cG" kind="relationship" relationship="viewControllers" id="9nQ-WC-c8w"/>
                         <segue destination="5z2-nK-OTx" kind="relationship" relationship="viewControllers" id="isP-PL-Twu"/>
                         <segue destination="ucz-k6-VPN" kind="relationship" relationship="viewControllers" id="xaF-IB-mPN"/>
-                        <segue destination="c8o-eg-q0h" kind="relationship" relationship="viewControllers" id="b1I-pK-o79"/>
+                        <segue destination="c8o-eg-q0h" kind="relationship" relationship="viewControllers" id="fZX-d5-diw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRW-Tq-xCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="648" y="-293"/>
+        </scene>
+        <!--ProfileStoryBoard-->
+        <scene sceneID="nfS-DO-puV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProfileStoryBoard" id="B5z-cy-9Z2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZJn-bH-zgn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-83" y="39"/>
         </scene>
         <!--CurrencyInfo-->
         <scene sceneID="m2j-Rd-SUY">
