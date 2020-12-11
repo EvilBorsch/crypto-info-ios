@@ -17,7 +17,7 @@ class CurrencyBaseViewController: UIViewController {
     
     var name: String = "Bitcoin"
     let NetworkManager = CurrencyNetworkManager.shared
-    var model: CurrencyModel = CurrencyModel()
+    var model: CurrencyModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

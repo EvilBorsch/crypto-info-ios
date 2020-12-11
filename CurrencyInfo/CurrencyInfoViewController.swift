@@ -19,17 +19,17 @@ class CurrencyInfoViewController: UIViewController {
     @IBOutlet weak var Cost: UILabel!
     @IBOutlet weak var CostCurr: UILabel!
 
-    var model: CurrencyModel = CurrencyModel()
+    var model: CurrencyModel?
     
     
     func updateModelView(){
-        CurrencyName.text = self.model.currencyName
-        StockName.text = self.model.stockName
-        InfoTextView.text = self.model.description
-        Cost.text = String(self.model.cost)
-        CostCurr.text = self.model.convertionCurrencyName
-        Change.text = String(self.model.changeValueInPercents) + "%"
-        if self.model.didGrow {
+        CurrencyName.text = self.model?.name
+        StockName.text = self.model?.symbol
+        InfoTextView.text = self.model?.description
+        Cost.text = String(self.model?.currCryptoInfo.costInFiats[0].price ?? 0)
+        CostCurr.text = self.model?.currCryptoInfo.costInFiats[0].symbol
+        Change.text = String(self.model?.currCryptoInfo.percentChange1h ?? 0) + "%"
+        if self.model?.currCryptoInfo.percentChange1h ?? 0 > 0 {
             Change.backgroundColor = UIColor.systemGreen
         }
     }

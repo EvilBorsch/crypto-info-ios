@@ -13,7 +13,7 @@ protocol CurrNetProto: AnyObject {
 }
 
 final class CurrencyNetworkManager: CurrNetProto {
-    private let baseUrl = "http://localhost:5000/api/currency"
+    private let baseUrl = "\(BASE_URL)/api/currency"
     
     func GetCryptoByName(name: String, completion: @escaping (CurrencyModel?, String?) -> Void) {
         AF.request("\(self.baseUrl)/get?curr_name=\(name)").responseJSON {response in
