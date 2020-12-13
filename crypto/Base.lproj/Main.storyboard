@@ -158,7 +158,7 @@
                 <viewControllerPlaceholder storyboardName="ProfileStoryBoard" id="B5z-cy-9Z2" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZJn-bH-zgn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-83" y="39"/>
+            <point key="canvasLocation" x="-215" y="30"/>
         </scene>
         <!--HomeStoryboard-->
         <scene sceneID="MzK-GL-NUD">
