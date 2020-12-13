@@ -7,6 +7,7 @@ target 'crypto' do
 
 pod 'Alamofire'
 pod 'Kingfisher'
-
+pod 'Charts'
+pod 'TinyConstraints'
 
 end
