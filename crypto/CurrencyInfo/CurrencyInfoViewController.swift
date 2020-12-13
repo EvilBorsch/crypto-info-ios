@@ -8,7 +8,6 @@
 import UIKit
 
 class CurrencyInfoViewController: UIViewController {
-
     
     @IBOutlet weak var ChangeStackView: UIStackView!
     @IBOutlet weak var Change: UILabel!
@@ -44,5 +43,11 @@ class CurrencyInfoViewController: UIViewController {
         Change.layer.masksToBounds = true
         
         self.updateModelView()
+    
+    
     }
+
+    
+    
+
 }

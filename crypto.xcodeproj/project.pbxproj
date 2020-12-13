@@ -37,6 +37,7 @@
 		91D6FB4B253A2E2B000E740F /* utills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D6FB4A253A2E2B000E740F /* utills.swift */; };
 		A653E63FD4B4767C5B299F52 /* Pods_crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9790A76A3197909597F31B70 /* Pods_crypto.framework */; };
 		B52EBA63256AE8B800235205 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52EBA62256AE8B800235205 /* HomeViewController.swift */; };
+		B55E35FF2586ADDC00E45FC1 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E35FE2586ADDC00E45FC1 /* ChartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		91D6FB4A253A2E2B000E740F /* utills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utills.swift; sourceTree = "<group>"; };
 		9790A76A3197909597F31B70 /* Pods_crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_crypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52EBA62256AE8B800235205 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B55E35FE2586ADDC00E45FC1 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		BAC40020998E5A3C663CCBBB /* Pods-crypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto.release.xcconfig"; path = "Target Support Files/Pods-crypto/Pods-crypto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				60705378256BC3640091F62C /* CurrencyInfo.storyboard */,
+				B55E35FE2586ADDC00E45FC1 /* ChartViewController.swift */,
 				60D18FC7256BCF44006E5A94 /* CurrencyBaseViewController.swift */,
 				60705376256BC3640091F62C /* CurrencyInfoViewController.swift */,
 			);
@@ -344,6 +347,7 @@
 				919DD76E25399C8F0030B3E1 /* SceneDelegate.swift in Sources */,
 				60E14EB4258642320044E59E /* HomeCellModel.swift in Sources */,
 				60E14EC22586448B0044E59E /* UrlsModel.swift in Sources */,
+				B55E35FF2586ADDC00E45FC1 /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
