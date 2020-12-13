@@ -16,11 +16,13 @@ class CurrencyBaseViewController: UIViewController {
     
     
     var name: String = "Bitcoin"
-    let NetworkManager = CurrencyNetworkManager.shared
+    let network = NetworkManager.shared
     var model: CurrencyModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
         
         self.ErrorLabel.isHidden = true
         self.ErrorLabel.layer.cornerRadius = 15
@@ -28,7 +30,7 @@ class CurrencyBaseViewController: UIViewController {
         self.CurrencyName.text = self.name
         self.loadIndicator.startAnimating()
         
-        NetworkManager.GetCryptoByName(name: self.name) {
+        network.GetCryptoByName(name: self.name) {
             [weak self](model, error) in
             guard let self = self else {
                 return

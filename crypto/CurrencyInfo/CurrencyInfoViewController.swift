@@ -26,9 +26,9 @@ class CurrencyInfoViewController: UIViewController {
         CurrencyName.text = self.model?.name
         StockName.text = self.model?.symbol
         InfoTextView.text = self.model?.description
-        Cost.text = String(self.model?.currCryptoInfo.costInFiats[0].price ?? 0)
+        Cost.text = String(format: "%.2f",self.model?.currCryptoInfo.costInFiats[0].price ?? 0)
         CostCurr.text = self.model?.currCryptoInfo.costInFiats[0].symbol
-        Change.text = String(self.model?.currCryptoInfo.percentChange1h ?? 0) + "%"
+        Change.text = String(format: "%.2f",self.model?.currCryptoInfo.percentChange1h ?? 0) + "%"
         if self.model?.currCryptoInfo.percentChange1h ?? 0 > 0 {
             Change.backgroundColor = UIColor.systemGreen
         }
