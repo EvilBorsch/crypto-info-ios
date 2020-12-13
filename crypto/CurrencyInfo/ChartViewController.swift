@@ -37,9 +37,12 @@ class ChartViewController: UIViewController {
 
     override func viewDidLoad() {
         view.addSubview(lineChartView)
-        lineChartView.centerInSuperview()
-        lineChartView.width(to: view)
-        lineChartView.heightToWidth(of: view)
+        view.layer.cornerRadius = 10
+        view.layer.masksToBounds = true
+//        lineChartView.centerInSuperview()
+//        lineChartView.width(to: view)
+        lineChartView.edgesToSuperview()
+//        lineChartView.heightToWidth(of: view)
         
         super.viewDidLoad()
         
