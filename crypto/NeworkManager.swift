@@ -12,7 +12,7 @@ enum NetError: Error {
     case decodeError
     case requestFailure
     case noDataInRequest
-        
+    
     var errorDescription: String {
         switch self {
         case .decodeError:
@@ -26,7 +26,7 @@ enum NetError: Error {
 }
 
 protocol CurrNetProto: AnyObject {
-    func GetCryptoByName(name: String, completion: @escaping (CurrencyModel?, String?) -> Void)
+    func GetCryptoByName(name: String, completion: @escaping (Result<CurrencyModel, Error>) -> Void)
     func GetCryptoListAll(completion: @escaping (Result<[HomeCellModel], Error>) -> Void)
 }
 
@@ -36,30 +36,31 @@ final class NetworkManager: CurrNetProto {
     static let shared: CurrNetProto = NetworkManager()
     private init() {}
     
-    func GetCryptoByName(name: String, completion: @escaping (CurrencyModel?, String?) -> Void) {
+    func GetCryptoByName(name: String, completion: @escaping (Result<CurrencyModel, Error>) -> Void) {
         AF.request("\(self.baseUrl)/get?curr_name=\(name.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)").responseJSON {response in
-                switch response.result {
-                case .success:
-                    if let jsonData = response.data {
-                        let jsonDecoder = JSONDecoder()
-                        do {
-                            let model = try jsonDecoder.decode(CurrencyModel.self, from: jsonData)
-                            completion(model, nil)
-                            return
-        
-                        } catch let error {
-                            debugPrint(error.localizedDescription)
-                            completion(nil, "Decode error: \(error.localizedDescription)")
-                            return
-                        }
-        
-                    }
-                case .failure(let error):
-                    debugPrint(error)
-                    completion(nil, "Request failure: \(error.errorDescription ?? "")")
+            switch response.result {
+            case .success:
+                guard let data = response.data, !data.isEmpty else {
+                    completion(.failure(NetError.noDataInRequest))
                     return
                 }
+                let jsonDecoder = JSONDecoder()
+                do {
+                    let model = try jsonDecoder.decode(CurrencyModel.self, from: data)
+                    completion(.success(model))
+                    return
+                    
+                } catch let error {
+                    debugPrint(error.localizedDescription)
+                    completion(.failure(NetError.decodeError))
+                    return
+                }
+            case .failure(let error):
+                debugPrint(error)
+                completion(.failure(NetError.requestFailure))
+                return
             }
+        }
     }
     
     func GetCryptoListAll(completion: @escaping (Result<[HomeCellModel], Error>) -> Void) {

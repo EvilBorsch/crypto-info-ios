@@ -5,49 +5,70 @@
 //  Created by Алексей on 28.10.2020.
 //
 
+import TinyConstraints
 import UIKit
 
 class CurrencyInfoViewController: UIViewController {
     
-    @IBOutlet weak var ChangeStackView: UIStackView!
-    @IBOutlet weak var Change: UILabel!
-    @IBOutlet weak var CostStackView: UIStackView!
-    @IBOutlet weak var InfoTextView: UITextView!
-    @IBOutlet weak var CurrencyName: UILabel!
-    @IBOutlet weak var StockName: UILabel!
-    @IBOutlet weak var Cost: UILabel!
-    @IBOutlet weak var CostCurr: UILabel!
-
+    let loadIndicator = UIActivityIndicatorView(style: .large)
+    
+    var alert:UIAlertController!
+    
     var model: CurrencyModel?
-    
-    
-    func updateModelView(){
-        CurrencyName.text = self.model?.name
-        StockName.text = self.model?.symbol
-        InfoTextView.text = self.model?.description
-        Cost.text = String(format: "%.2f",self.model?.currCryptoInfo.costInFiats[0].price ?? 0)
-        CostCurr.text = self.model?.currCryptoInfo.costInFiats[0].symbol
-        Change.text = String(format: "%.2f",self.model?.currCryptoInfo.percentChange1h ?? 0) + "%"
-        if self.model?.currCryptoInfo.percentChange1h ?? 0 > 0 {
-            Change.backgroundColor = UIColor.systemGreen
-        }
-    }
-    
+    var currName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ChangeStackView.layer.cornerRadius = 15
-        CostStackView.layer.cornerRadius = 15
-        Change.layer.cornerRadius = 10
-        Change.layer.masksToBounds = true
-        
-        self.updateModelView()
-    
-    
+        self.title = currName
+        self.alert = initAlert()
+                
+        view.addSubview(loadIndicator)
+        self.loadIndicator.edgesToSuperview()
+
+        self.loadIndicator.startAnimating()
+        self.loadInfo()
+
     }
 
+    func loadInfo() {
+        let network = NetworkManager.shared
+        network.GetCryptoByName(name: currName, completion: { [weak self] res in
+            guard let self = self else {
+                return
+            }
+            switch res {
+            case .success(let info):
+                self.model = info
+                DispatchQueue.main.async{
+                    self.loadIndicator.stopAnimating()
+                    
+                }
+            case .failure(let error):
+                self.alert.title = "Network error"
+                self.alert.message = "Something went wrong during getting information\nError: \(error)"
+                
+                
+                DispatchQueue.main.async {
+                    self.present(self.alert, animated: true, completion: nil)
+                }
+            }
+            
+        })
+    }
     
-    
-
+    func initAlert() -> UIAlertController {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: {_ in
+            self.dismiss(animated: true) {
+                self.loadInfo()
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
+        
+        return alert
+    }
 }
+
+

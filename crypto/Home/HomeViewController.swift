@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let search = UISearchController(searchResultsController: nil)
+    let refresh = UIRefreshControl()
     
     var homeCellModels: [HomeCellModel] = []
     var homeCellModelsFiltered: [HomeCellModel] = []
@@ -32,6 +33,9 @@ class HomeViewController: UIViewController {
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = search
+        
+        tableView.refreshControl = self.refresh
+        refresh.addTarget(self, action: #selector(refreshUpd(sender:)), for: .valueChanged)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -62,6 +66,12 @@ class HomeViewController: UIViewController {
             
         })
     }
+    
+    @objc
+    private func refreshUpd(sender: UIRefreshControl) {
+        loadInfo()
+        sender.endRefreshing()
+    }
 }
 
 extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
@@ -81,13 +91,13 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "CurrencyInfo", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CellBaseShow") as! CurrencyBaseViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "CurrencyInfo") as! CurrencyInfoViewController
         if isSearch() {
-            vc.name = homeCellModelsFiltered[indexPath.row].name
+            vc.currName = homeCellModelsFiltered[indexPath.row].name
         } else {
-            vc.name = homeCellModels[indexPath.row].name
+            vc.currName = homeCellModels[indexPath.row].name
         }
-        
+        tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -110,14 +120,36 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let swipe = UIContextualAction.init(style: .normal, title: "Добавить в избранное", handler:{ (action, view, success) in
+        let favorite = UIContextualAction.init(style: .normal, title: "Add to favorites", handler:{ (action, view, success) in
             
         })
         
-        swipe.image = UIImage(systemName: "star.fill")
-        swipe.backgroundColor = .systemGreen
+        let symbolConfig = UIImage.SymbolConfiguration(weight: .bold)
         
-        return UISwipeActionsConfiguration(actions: [swipe])
+        favorite.image = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
+        favorite.backgroundColor = .systemBlue
+        
+        return UISwipeActionsConfiguration(actions: [favorite])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let buy = UIContextualAction.init(style: .normal, title: "Buy", handler:{ (action, view, success) in
+            
+        })
+        
+        let symbolConfig = UIImage.SymbolConfiguration(weight: .bold)
+        
+        buy.image = UIImage(systemName: "cart.fill.badge.plus", withConfiguration: symbolConfig)
+        buy.backgroundColor = .systemGreen
+        
+        let sell = UIContextualAction.init(style: .normal, title: "Sell", handler:{ (action, view, success) in
+            
+        })
+        
+        sell.image = UIImage(systemName: "cart.fill.badge.minus", withConfiguration: symbolConfig)
+        sell.backgroundColor = .systemRed
+        
+        return UISwipeActionsConfiguration(actions: [buy, sell])
     }
 }
 
