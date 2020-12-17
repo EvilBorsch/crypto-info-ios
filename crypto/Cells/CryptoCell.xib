@@ -19,14 +19,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dtH-O2-pQA">
-                        <rect key="frame" x="20" y="40.5" width="50" height="50"/>
+                        <rect key="frame" x="20" y="38" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="0KS-ZT-bib"/>
                             <constraint firstAttribute="width" constant="50" id="GIw-6n-pxP"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VZW-fW-Kxe">
-                        <rect key="frame" x="85" y="15" width="150" height="101"/>
+                        <rect key="frame" x="85" y="15" width="130" height="101"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="clip" numberOfLines="2" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GOH-fq-qbp">
                                 <rect key="frame" x="0.0" y="0.0" width="104.5" height="48"/>
@@ -45,20 +45,20 @@
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="150" id="PGs-db-lof"/>
+                            <constraint firstAttribute="width" constant="130" id="PGs-db-lof"/>
                         </constraints>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="zzr-DT-tuF">
-                        <rect key="frame" x="238" y="15" width="150" height="101"/>
+                        <rect key="frame" x="258" y="15" width="130" height="101"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="170.4 $" textAlignment="natural" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mfi-0W-dQ3">
-                                <rect key="frame" x="42" y="0.0" width="108" height="38.5"/>
+                                <rect key="frame" x="22" y="0.0" width="108" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uj8-2f-GeT">
-                                <rect key="frame" x="30" y="66" width="120" height="35"/>
+                                <rect key="frame" x="10" y="66" width="120" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.04%" textAlignment="center" lineBreakMode="clip" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0ZC-ZO-3bb">
                                         <rect key="frame" x="5" y="5" width="110" height="25"/>
@@ -90,7 +90,7 @@
                     <constraint firstItem="dtH-O2-pQA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MBk-C9-YUs"/>
                     <constraint firstItem="zzr-DT-tuF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Pwp-uW-dKN"/>
                     <constraint firstAttribute="trailing" secondItem="zzr-DT-tuF" secondAttribute="trailing" constant="15" id="Zg3-s5-nCQ"/>
-                    <constraint firstAttribute="bottom" secondItem="VZW-fW-Kxe" secondAttribute="bottom" constant="15" id="gIw-Ri-G9U"/>
+                    <constraint firstAttribute="bottom" secondItem="VZW-fW-Kxe" secondAttribute="bottom" constant="10" id="gIw-Ri-G9U"/>
                     <constraint firstItem="VZW-fW-Kxe" firstAttribute="leading" secondItem="dtH-O2-pQA" secondAttribute="trailing" constant="15" id="ro3-M9-gPl"/>
                 </constraints>
             </tableViewCellContentView>

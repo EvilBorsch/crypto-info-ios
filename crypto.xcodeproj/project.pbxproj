@@ -112,6 +112,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		603A5DD0258BA1FB00A074E3 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				B55E35FE2586ADDC00E45FC1 /* ChartViewController.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
 		6049C38125865D38006905B3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				60705378256BC3640091F62C /* CurrencyInfo.storyboard */,
-				B55E35FE2586ADDC00E45FC1 /* ChartViewController.swift */,
 				60D18FC7256BCF44006E5A94 /* CurrencyBaseViewController.swift */,
 				60705376256BC3640091F62C /* CurrencyInfoViewController.swift */,
 			);
@@ -175,6 +182,7 @@
 		919DD76A25399C8F0030B3E1 /* crypto */ = {
 			isa = PBXGroup;
 			children = (
+				603A5DD0258BA1FB00A074E3 /* Chart */,
 				60705379256BC3640091F62C /* NeworkManager.swift */,
 				6049C38125865D38006905B3 /* Cells */,
 				60E14EB6258643FF0044E59E /* Models */,
