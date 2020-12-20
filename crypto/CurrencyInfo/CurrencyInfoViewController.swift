@@ -27,6 +27,8 @@ class CurrencyInfoViewController: UIViewController {
     @IBOutlet weak var BasedOnLabel: UILabel!
     @IBOutlet weak var TokenAddressLabel: UILabel!
     
+    weak var fiatVc: FiatCollectionViewController!
+    
     let loadIndicator = UIActivityIndicatorView(style: .large)
     
     var alert:UIAlertController!
@@ -40,7 +42,6 @@ class CurrencyInfoViewController: UIViewController {
         self.title = currName
         self.alert = initAlert()
 
-                
         view.addSubview(loadIndicator)
         self.loadIndicator.edgesToSuperview()
 
@@ -107,6 +108,7 @@ class CurrencyInfoViewController: UIViewController {
                     self.updateView()
                     self.loadIndicator.stopAnimating()
                     self.graphView?.view.isHidden = true
+                    self.fiatVc.fiats = self.model.currCryptoInfo.costInFiats.reversed()
                 })
             case .failure(let error):
                 self.alert.title = "Network error"
@@ -134,7 +136,14 @@ class CurrencyInfoViewController: UIViewController {
         
         return alert
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FiatSegue" {
+            fiatVc = segue.destination as! FiatCollectionViewController
+        }
+    }
 }
+
 
 
 

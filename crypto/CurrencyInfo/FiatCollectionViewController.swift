@@ -12,6 +12,12 @@ private let reuseIdentifier = "FiatCell"
 
 
 class FiatCollectionViewController: UICollectionViewController {
+    var fiats:[FiatModel]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -29,7 +35,7 @@ class FiatCollectionViewController: UICollectionViewController {
         let insetX = (view.frame.width - cellWidth)/2.0
         let insetY = (view.frame.height - cellHeight)/2.0
         
-        collectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+        collectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX - 20, bottom: insetY, right: insetX)
     }
 }
 
@@ -40,11 +46,20 @@ extension FiatCollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return fiats?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiatCollectionViewCell
+        
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        
+        cell.layer.borderWidth = 2
+        cell.layer.borderColor = UIColor.systemBlue.cgColor
+        
+        cell.configure(with: fiats![indexPath.row])
+        
         return cell
     }
 
@@ -55,7 +70,7 @@ extension FiatCollectionViewController {
         
         var offset = targetContentOffset.pointee
         let idx = round((offset.x + scrollView.contentInset.left)/cellWidthWithSpacing)
-        offset = CGPoint(x: idx * cellWidthWithSpacing - scrollView.contentInset.left + 20, y: scrollView.contentInset.top)
+        offset = CGPoint(x: idx * cellWidthWithSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
         targetContentOffset.pointee = offset
 
     }
