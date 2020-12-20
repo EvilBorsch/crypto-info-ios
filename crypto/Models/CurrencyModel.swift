@@ -13,6 +13,7 @@ class CurrencyModel: Codable {
     var name: String
     var symbol: String
     var rank: Int
+    var category: String
     var logo: String
     var description: String
     var platform: PlatformModel
@@ -23,6 +24,7 @@ class CurrencyModel: Codable {
         case id
         case name
         case symbol
+        case category
         case rank
         case logo
         case description
@@ -33,6 +35,10 @@ class CurrencyModel: Codable {
     
     var logoURL:URL? {
         URL(string: logo)
+    }
+    
+    var bigLogoUrl:URL? {
+        return URL(string: "https://s2.coinmarketcap.com/static/img/coins/128x128/\(id).png")
     }
     
 }
