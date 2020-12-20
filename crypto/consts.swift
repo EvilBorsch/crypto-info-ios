@@ -9,3 +9,4 @@ import Foundation
 
 
 let BASE_URL="http://18.188.76.222:5000/"
+//let BASE_URL="http://0.0.0.0:5000/"

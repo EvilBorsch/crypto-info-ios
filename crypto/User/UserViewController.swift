@@ -18,12 +18,16 @@ class UserViewController: UIViewController {
         }
         nicknameTextField.text = ""
         emailTextField.text = ""
-        showPage(presenter: self, viewId: "sign_in", storyBoardName: "ProfileStoryBoard")
+        
+        let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "sign_in")
+        definesPresentationContext = true
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true)
     }
 
     func callback(needRegistration: Bool, message: String, user: User) {
         print(user)
-        print("usrImng: ",user.photoImage)
         
         showError(err: message)
         
@@ -37,7 +41,8 @@ class UserViewController: UIViewController {
         } else {
             nicknameTextField.text = user.nickname
             emailTextField.text = user.email
-            ImageView.image = user.photoImage
+            ImageView.load(user.photoUrl)
+            ImageView.isHidden=false
         }
     }
 
@@ -47,6 +52,10 @@ class UserViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("im here")
         userContoller()
     }
 }
+
+
+
