@@ -33,7 +33,7 @@ class User {
                     self.nickname = user.name
                     self.email = user.email
                     let photoUrl = user.photo ?? ""
-                    self.photoImage = getImageFromUrl(url: photoUrl)
+//                    self.photoImage = getImageFromUrl(url: photoUrl)
                     callback(false, "", self)
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")

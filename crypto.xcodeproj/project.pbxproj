@@ -37,7 +37,6 @@
 		919DD7822539ACAA0030B3E1 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DD7812539ACAA0030B3E1 /* UserViewController.swift */; };
 		919DD78A2539BAF70030B3E1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DD7892539BAF70030B3E1 /* UserModel.swift */; };
 		91D6FB48253A2D63000E740F /* ProfileStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D6FB47253A2D63000E740F /* ProfileStoryBoard.storyboard */; };
-		91D6FB4B253A2E2B000E740F /* utills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D6FB4A253A2E2B000E740F /* utills.swift */; };
 		A653E63FD4B4767C5B299F52 /* Pods_crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9790A76A3197909597F31B70 /* Pods_crypto.framework */; };
 		B52EBA63256AE8B800235205 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52EBA62256AE8B800235205 /* HomeViewController.swift */; };
 		B55E35FF2586ADDC00E45FC1 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E35FE2586ADDC00E45FC1 /* ChartViewController.swift */; };
@@ -76,7 +75,6 @@
 		919DD7812539ACAA0030B3E1 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		919DD7892539BAF70030B3E1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		91D6FB47253A2D63000E740F /* ProfileStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryBoard.storyboard; sourceTree = "<group>"; };
-		91D6FB4A253A2E2B000E740F /* utills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utills.swift; sourceTree = "<group>"; };
 		9790A76A3197909597F31B70 /* Pods_crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_crypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52EBA62256AE8B800235205 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B55E35FE2586ADDC00E45FC1 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 		600B8ABA2590DDE7000AF7A8 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				91D6FB4A253A2E2B000E740F /* utills.swift */,
 				600B8ABB2590DE03000AF7A8 /* dateUtil.swift */,
 			);
 			path = utils;
@@ -363,7 +360,6 @@
 				6070537A256BC3640091F62C /* CurrencyInfoViewController.swift in Sources */,
 				0A232BF9256C10B900495C7F /* consts.swift in Sources */,
 				919DD7822539ACAA0030B3E1 /* UserViewController.swift in Sources */,
-				91D6FB4B253A2E2B000E740F /* utills.swift in Sources */,
 				919DD76C25399C8F0030B3E1 /* AppDelegate.swift in Sources */,
 				919DD78A2539BAF70030B3E1 /* UserModel.swift in Sources */,
 				600B8AA1258E44F9000AF7A8 /* FiatCollectionViewController.swift in Sources */,

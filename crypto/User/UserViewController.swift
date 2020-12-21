@@ -18,7 +18,7 @@ class UserViewController: UIViewController {
         }
         nicknameTextField.text = ""
         emailTextField.text = ""
-        showPage(presenter: self, viewId: "sign_in", storyBoardName: "ProfileStoryBoard")
+//        showPage(presenter: self, viewId: "sign_in", storyBoardName: "ProfileStoryBoard")
     }
 
     func callback(needRegistration: Bool, message: String, user: User) {
