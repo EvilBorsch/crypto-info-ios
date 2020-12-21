@@ -118,6 +118,7 @@
             <connections>
                 <outlet property="Cost" destination="J6s-MB-hkK" id="9ps-8s-y9o"/>
                 <outlet property="CurrName" destination="Svk-Qr-EmN" id="H15-sl-EKz"/>
+                <outlet property="CurrShowLabel" destination="18r-Ys-zdD" id="2lT-Yc-YK7"/>
                 <outlet property="LastUpd" destination="gyx-1P-v9s" id="zRp-35-SdP"/>
                 <outlet property="Symbol" destination="SK4-Xk-RUv" id="uJP-Zg-vYp"/>
             </connections>

@@ -19,6 +19,7 @@ class CurrencyModel: Codable {
     var platform: PlatformModel
     var urls: UrlsModel
     var currCryptoInfo: CurrCryptoInfo
+    var dateAdded: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -31,6 +32,7 @@ class CurrencyModel: Codable {
         case platform
         case urls
         case currCryptoInfo = "curr_crypto_info"
+        case dateAdded = "date_added"
     }
     
     var logoURL:URL? {

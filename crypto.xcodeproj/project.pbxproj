@@ -15,6 +15,7 @@
 		600B8AA1258E44F9000AF7A8 /* FiatCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8AA0258E44F9000AF7A8 /* FiatCollectionViewController.swift */; };
 		600B8AA5258E4543000AF7A8 /* FiatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8AA3258E4543000AF7A8 /* FiatCell.swift */; };
 		600B8AA6258E4543000AF7A8 /* FiatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600B8AA4258E4543000AF7A8 /* FiatCell.xib */; };
+		600B8ABC2590DE04000AF7A8 /* dateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8ABB2590DE03000AF7A8 /* dateUtil.swift */; };
 		6049C37F25865B04006905B3 /* HomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6049C37E25865B04006905B3 /* HomeStoryboard.storyboard */; };
 		6049C38525865D7D006905B3 /* CryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6049C38325865D7D006905B3 /* CryptoCell.swift */; };
 		6049C38625865D7D006905B3 /* CryptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6049C38425865D7D006905B3 /* CryptoCell.xib */; };
@@ -51,6 +52,7 @@
 		600B8AA0258E44F9000AF7A8 /* FiatCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCollectionViewController.swift; sourceTree = "<group>"; };
 		600B8AA3258E4543000AF7A8 /* FiatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCell.swift; sourceTree = "<group>"; };
 		600B8AA4258E4543000AF7A8 /* FiatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiatCell.xib; sourceTree = "<group>"; };
+		600B8ABB2590DE03000AF7A8 /* dateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateUtil.swift; sourceTree = "<group>"; };
 		6049C37E25865B04006905B3 /* HomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryboard.storyboard; sourceTree = "<group>"; };
 		6049C38325865D7D006905B3 /* CryptoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCell.swift; sourceTree = "<group>"; };
 		6049C38425865D7D006905B3 /* CryptoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CryptoCell.xib; sourceTree = "<group>"; };
@@ -116,6 +118,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		600B8ABA2590DDE7000AF7A8 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				91D6FB4A253A2E2B000E740F /* utills.swift */,
+				600B8ABB2590DE03000AF7A8 /* dateUtil.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		603A5DD0258BA1FB00A074E3 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +181,7 @@
 		919DD75F25399C8F0030B3E1 = {
 			isa = PBXGroup;
 			children = (
+				600B8ABA2590DDE7000AF7A8 /* utils */,
 				919DD76A25399C8F0030B3E1 /* crypto */,
 				919DD76925399C8F0030B3E1 /* Products */,
 				429DFC5B488DD55D92127971 /* Pods */,
@@ -202,7 +214,6 @@
 				60705379256BC3640091F62C /* NeworkManager.swift */,
 				919DD76D25399C8F0030B3E1 /* SceneDelegate.swift */,
 				0A232BF5256C100100495C7F /* User */,
-				91D6FB4A253A2E2B000E740F /* utills.swift */,
 				919DD76F25399C8F0030B3E1 /* ViewController.swift */,
 			);
 			path = crypto;
@@ -341,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				600B8ABC2590DE04000AF7A8 /* dateUtil.swift in Sources */,
 				6049C38525865D7D006905B3 /* CryptoCell.swift in Sources */,
 				6070537B256BC3640091F62C /* CurrencyModel.swift in Sources */,
 				60E14EBC258644430044E59E /* CurrCryptoInfoModel.swift in Sources */,

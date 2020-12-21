@@ -6,8 +6,12 @@
 //
 
 import Kingfisher
+import SafariServices
 import TinyConstraints
 import UIKit
+import WebKit
+
+var urls: [Int:URL] = [:]
 
 class CurrencyInfoViewController: UIViewController {
     @IBOutlet weak var currencyImage: UIImageView!
@@ -27,6 +31,16 @@ class CurrencyInfoViewController: UIViewController {
     @IBOutlet weak var BasedOnLabel: UILabel!
     @IBOutlet weak var TokenAddressLabel: UILabel!
     
+    @IBOutlet weak var Description: UITextView!
+    @IBOutlet weak var DateAdded: UILabel!
+    
+    @IBOutlet weak var Github: UIImageView!
+    @IBOutlet weak var Twitter: UIImageView!
+    @IBOutlet weak var Reddit: UIImageView!
+    @IBOutlet weak var Website: UIImageView!
+    @IBOutlet weak var Doc: UIImageView!
+    
+    
     weak var fiatVc: FiatCollectionViewController!
     
     let loadIndicator = UIActivityIndicatorView(style: .large)
@@ -36,9 +50,11 @@ class CurrencyInfoViewController: UIViewController {
     
     var model: CurrencyModel!
     var currName: String!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = currName
         self.alert = initAlert()
 
@@ -56,6 +72,12 @@ class CurrencyInfoViewController: UIViewController {
         Change24hView.layer.cornerRadius = 10
         Change24hView.layer.masksToBounds = true
         
+        Github.image = Github.image?.withRenderingMode(.alwaysTemplate)
+        Twitter.image = Twitter.image?.withRenderingMode(.alwaysTemplate)
+        Reddit.image = Reddit.image?.withRenderingMode(.alwaysTemplate)
+        Website.image = Website.image?.withRenderingMode(.alwaysTemplate)
+        Doc.image = Doc.image?.withRenderingMode(.alwaysTemplate)
+        
          
         
         self.loadInfo()
@@ -72,6 +94,33 @@ class CurrencyInfoViewController: UIViewController {
             view.backgroundColor = .systemRed
         }
     }
+    
+    func configureUrl(for imageView:UIImageView, tag: Int) {
+        guard let _ = urls[tag] else {
+            imageView.isHidden = true
+            return
+        }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(linkTapped(tapGestureRecognizer:)))
+        
+        imageView.tag = tag
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tap)
+        
+    }
+    
+    
+    @objc func linkTapped(tapGestureRecognizer: UITapGestureRecognizer){
+
+        let tappedView = tapGestureRecognizer.view as! UIImageView
+        
+        let sfVc = SFSafariViewController(url: urls[tappedView.tag]!)
+        sfVc.modalPresentationStyle = .pageSheet
+        
+        present(sfVc, animated: true, completion: nil)
+    }
+    
+ 
     
     func updateView(){
         currencyImage.kf.indicatorType = .activity
@@ -92,6 +141,35 @@ class CurrencyInfoViewController: UIViewController {
         } else {
             PlatformView.isHidden = true
         }
+        
+        urls[0] = model.urls.sourceURL
+        urls[1] = model.urls.twitterURL
+        urls[2] = model.urls.redditURL
+        urls[3] = model.urls.websiteURL
+        urls[4] = model.urls.docURL
+        
+        configureUrl(for: Github, tag: 0)
+        configureUrl(for: Twitter, tag: 1)
+        configureUrl(for: Reddit, tag: 2)
+        configureUrl(for: Website, tag: 3)
+        configureUrl(for: Doc, tag: 4)
+        
+        Description.text = model.description
+        
+        var date = getDateFromString(dateString: model.dateAdded)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM YYYY"
+        DateAdded.text = formatter.string(from: date!)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.doesRelativeDateFormatting = true
+
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        
+        date = getDateFromString(dateString: model.currCryptoInfo.lastUpdated)
+        LastUpdatedLabel.text = "\(dateFormatter.string(from: date!)) at \(timeFormatter.string(from: date!))"
         
     }
     
@@ -139,11 +217,8 @@ class CurrencyInfoViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FiatSegue" {
-            fiatVc = segue.destination as! FiatCollectionViewController
+            fiatVc = (segue.destination as! FiatCollectionViewController)
         }
     }
 }
-
-
-
 
