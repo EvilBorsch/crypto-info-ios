@@ -407,6 +407,7 @@
                         <outlet property="Twitter" destination="sJc-Tu-3DP" id="UOA-LF-Mk2"/>
                         <outlet property="Website" destination="HlZ-rA-Qpc" id="i1w-BH-UTn"/>
                         <outlet property="currencyImage" destination="Qqr-t1-4dJ" id="mf3-Li-RgQ"/>
+                        <outlet property="scrollView" destination="lPP-2D-snB" id="01u-WN-Y4E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6Z-lI-PHT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

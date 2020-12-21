@@ -14,6 +14,8 @@ import WebKit
 var urls: [Int:URL] = [:]
 
 class CurrencyInfoViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var currencyImage: UIImageView!
     @IBOutlet weak var Change1hView: UIView!
     @IBOutlet weak var Change24hView: UIView!
@@ -40,7 +42,6 @@ class CurrencyInfoViewController: UIViewController {
     @IBOutlet weak var Website: UIImageView!
     @IBOutlet weak var Doc: UIImageView!
     
-    
     weak var fiatVc: FiatCollectionViewController!
     
     let loadIndicator = UIActivityIndicatorView(style: .large)
@@ -51,10 +52,12 @@ class CurrencyInfoViewController: UIViewController {
     var model: CurrencyModel!
     var currName: String!
 
+    let refresh = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.scrollView.isHidden = true
         self.title = currName
         self.alert = initAlert()
 
@@ -62,6 +65,12 @@ class CurrencyInfoViewController: UIViewController {
         self.loadIndicator.edgesToSuperview()
 
         self.loadIndicator.startAnimating()
+        
+        self.scrollView.alwaysBounceVertical = true
+        
+        self.refresh.addTarget(self, action: #selector(updateData), for: UIControl.Event.valueChanged)
+        self.scrollView.addSubview(refresh)
+        
         
         Change7dView.layer.cornerRadius = 10
         Change7dView.layer.masksToBounds = true
@@ -83,6 +92,12 @@ class CurrencyInfoViewController: UIViewController {
         self.loadInfo()
     
 
+    }
+    
+    @objc
+    func updateData() {
+        self.refresh.endRefreshing()
+        self.loadInfo()
     }
 
     func setPercentChange(view: UIView, label: UILabel, value: Double) {
@@ -185,7 +200,7 @@ class CurrencyInfoViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute:{
                     self.updateView()
                     self.loadIndicator.stopAnimating()
-                    self.graphView?.view.isHidden = true
+                    self.scrollView.isHidden = false
                     self.fiatVc.fiats = self.model.currCryptoInfo.costInFiats.reversed()
                 })
             case .failure(let error):
