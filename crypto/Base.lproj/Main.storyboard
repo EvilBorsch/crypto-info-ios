@@ -31,7 +31,7 @@
                             <constraint firstItem="zJa-zo-3dt" firstAttribute="centerY" secondItem="oDM-hP-SaH" secondAttribute="centerY" id="up9-Op-uih"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Collection" image="star" catalog="system" id="AQ3-24-7w1"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star" catalog="system" id="AQ3-24-7w1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3u-kJ-fRP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
