@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "main_user")
         definesPresentationContext = true
         vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: false)
+        present(vc, animated: true)
     }
 
     @objc func imagePicked(tapGestureRecognizer: UITapGestureRecognizer) {

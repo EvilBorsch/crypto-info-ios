@@ -12,6 +12,7 @@
 		0A6DA1F62569862C00D73A50 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0A6DA1F52569862C00D73A50 /* AlamofireImage */; };
 		0A7958BD25751F44004FC281 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7958BC25751F44004FC281 /* ImagePicker.swift */; };
 		0ABB33A62575380E0077A37E /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB33A52575380E0077A37E /* Errors.swift */; };
+		1EB80409258FCC6E005AAADA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB80408258FCC6E005AAADA /* LoginViewController.swift */; };
 		6049C37F25865B04006905B3 /* HomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6049C37E25865B04006905B3 /* HomeStoryboard.storyboard */; };
 		6049C38525865D7D006905B3 /* CryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6049C38325865D7D006905B3 /* CryptoCell.swift */; };
 		6049C38625865D7D006905B3 /* CryptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6049C38425865D7D006905B3 /* CryptoCell.xib */; };
@@ -34,7 +35,6 @@
 		919DD7822539ACAA0030B3E1 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DD7812539ACAA0030B3E1 /* UserViewController.swift */; };
 		919DD78A2539BAF70030B3E1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DD7892539BAF70030B3E1 /* UserModel.swift */; };
 		91D6FB48253A2D63000E740F /* ProfileStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D6FB47253A2D63000E740F /* ProfileStoryBoard.storyboard */; };
-		91D6FB4B253A2E2B000E740F /* utills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D6FB4A253A2E2B000E740F /* utills.swift */; };
 		A653E63FD4B4767C5B299F52 /* Pods_crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9790A76A3197909597F31B70 /* Pods_crypto.framework */; };
 		B52EBA63256AE8B800235205 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52EBA62256AE8B800235205 /* HomeViewController.swift */; };
 		B55E35FF2586ADDC00E45FC1 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E35FE2586ADDC00E45FC1 /* ChartViewController.swift */; };
@@ -45,6 +45,7 @@
 		0A232BF8256C10B900495C7F /* consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = consts.swift; sourceTree = "<group>"; };
 		0A7958BC25751F44004FC281 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		0ABB33A52575380E0077A37E /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		1EB80408258FCC6E005AAADA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		399B98068D0E0CD18F8FB1DD /* Pods-crypto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto.debug.xcconfig"; path = "Target Support Files/Pods-crypto/Pods-crypto.debug.xcconfig"; sourceTree = "<group>"; };
 		6049C37E25865B04006905B3 /* HomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryboard.storyboard; sourceTree = "<group>"; };
 		6049C38325865D7D006905B3 /* CryptoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCell.swift; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		919DD7812539ACAA0030B3E1 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		919DD7892539BAF70030B3E1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		91D6FB47253A2D63000E740F /* ProfileStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryBoard.storyboard; sourceTree = "<group>"; };
-		91D6FB4A253A2E2B000E740F /* utills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utills.swift; sourceTree = "<group>"; };
 		9790A76A3197909597F31B70 /* Pods_crypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_crypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52EBA62256AE8B800235205 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B55E35FE2586ADDC00E45FC1 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +99,7 @@
 				0A232BF6256C103400495C7F /* ProfileViewController.swift */,
 				0A7958BC25751F44004FC281 /* ImagePicker.swift */,
 				0ABB33A52575380E0077A37E /* Errors.swift */,
+				1EB80408258FCC6E005AAADA /* LoginViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -196,7 +197,6 @@
 				919DD77625399C920030B3E1 /* LaunchScreen.storyboard */,
 				919DD77925399C920030B3E1 /* Info.plist */,
 				0A232BF5256C100100495C7F /* User */,
-				91D6FB4A253A2E2B000E740F /* utills.swift */,
 				0A232BF8256C10B900495C7F /* consts.swift */,
 			);
 			path = crypto;
@@ -337,6 +337,7 @@
 				60D18FC8256BCF44006E5A94 /* CurrencyBaseViewController.swift in Sources */,
 				6049C38525865D7D006905B3 /* CryptoCell.swift in Sources */,
 				6070537B256BC3640091F62C /* CurrencyModel.swift in Sources */,
+				1EB80409258FCC6E005AAADA /* LoginViewController.swift in Sources */,
 				60E14EBC258644430044E59E /* CurrCryptoInfoModel.swift in Sources */,
 				60E14EB8258644140044E59E /* FiatModel.swift in Sources */,
 				919DD77025399C8F0030B3E1 /* ViewController.swift in Sources */,
@@ -344,7 +345,6 @@
 				6070537A256BC3640091F62C /* CurrencyInfoViewController.swift in Sources */,
 				0A232BF9256C10B900495C7F /* consts.swift in Sources */,
 				919DD7822539ACAA0030B3E1 /* UserViewController.swift in Sources */,
-				91D6FB4B253A2E2B000E740F /* utills.swift in Sources */,
 				919DD76C25399C8F0030B3E1 /* AppDelegate.swift in Sources */,
 				919DD78A2539BAF70030B3E1 /* UserModel.swift in Sources */,
 				6070537D256BC3640091F62C /* NeworkManager.swift in Sources */,

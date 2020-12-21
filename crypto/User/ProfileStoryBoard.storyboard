@@ -10,7 +10,7 @@
         <!--Sign in-->
         <scene sceneID="0lW-DH-Dnl">
             <objects>
-                <viewController storyboardIdentifier="sign_in" title="Sign in" id="jtG-DS-P3q" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sign_in" title="Sign in" id="jtG-DS-P3q" customClass="LoginViewController" customModule="crypto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fhi-LC-XMY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
                                             <constraint firstAttribute="height" constant="34" id="u8d-ap-svN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aLz-AI-TeD">
                                         <rect key="frame" x="0.0" y="84" width="350" height="30"/>
@@ -40,6 +40,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gga-Yp-kW4">
                                                 <rect key="frame" x="0.0" y="0.0" width="175" height="30"/>
                                                 <state key="normal" title="Sign In"/>
+                                                <connections>
+                                                    <action selector="onClick:" destination="jtG-DS-P3q" eventType="touchUpInside" id="U6J-Lj-mCp"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sll-t9-r5W">
                                                 <rect key="frame" x="175" y="0.0" width="175" height="30"/>
@@ -75,6 +78,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wtx-Rx-uZf"/>
                     </view>
+                    <connections>
+                        <outlet property="EmailField" destination="Suy-0c-dI3" id="JzT-sh-Jme"/>
+                        <outlet property="PasswordField" destination="ypR-pA-OcO" id="ZDh-QJ-g1H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZP-Yt-Sq1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
