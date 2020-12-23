@@ -5,6 +5,11 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var EmailField: UITextField!
     
+    @IBAction func clickRegitster(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "sign_up")
+        self.tabBarController!.viewControllers![3]=vc
+    }
     
     @IBOutlet weak var PasswordField: UITextField!
     
@@ -12,15 +17,12 @@ class LoginViewController: UIViewController {
         if (error==""){
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "main_user")
-            definesPresentationContext = true
-            vc.modalPresentationStyle = .overCurrentContext
             DispatchQueue.main.async {
-                self.presentingViewController?.viewDidAppear(true)
-                self.dismiss(animated: true, completion: nil)
+                self.tabBarController!.viewControllers![3]=vc
             }
         }
         else{
-            showError(err: error)
+            showError(err: error,inputController: self)
         }
     }
     

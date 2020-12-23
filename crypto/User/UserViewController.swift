@@ -21,22 +21,22 @@ class UserViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "sign_in")
-        definesPresentationContext = true
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: true)
+        DispatchQueue.main.async {
+            self.tabBarController!.viewControllers![3]=vc
+        }
+        
     }
 
     func callback(needRegistration: Bool, message: String, user: User) {
         print(user)
         
-        showError(err: message)
+        // showError(err: message,inputController: self)
         
         if needRegistration {
             let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "sign_in")
-            definesPresentationContext = true
-            vc.modalPresentationStyle = .overCurrentContext
-            present(vc, animated: false)
+            self.tabBarController!.viewControllers![3]=vc
+            
             return
         } else {
             nicknameTextField.text = user.nickname

@@ -60,7 +60,9 @@ class User {
             "Nickname": nickname,
         ]
         let multipart = MultipartFormData()
-        multipart.append(avatar!.jpegData(compressionQuality: 0.1)!, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
+        if (avatar != nil){
+            multipart.append(avatar!.jpegData(compressionQuality: 0.1)!, withName: "photo", fileName: "photo.jpeg", mimeType: "image/jpeg")
+        }
         for (key, value) in parameters {
             multipart.append(value.data(using: String.Encoding.utf8)!, withName: key)
         }
@@ -74,7 +76,7 @@ class User {
                     self.email = user.email
                     let photoUrl = user.photo ?? ""
                     self.photoUrl = photoUrl
-                    callback("") // TODO: add message
+                    callback("")
                     return
                 } catch _ as NSError {
                     let dataString = String(data: response.data!, encoding: .utf8) ?? ""
