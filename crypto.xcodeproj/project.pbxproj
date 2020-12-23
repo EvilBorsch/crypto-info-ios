@@ -13,6 +13,10 @@
 		0A7958BD25751F44004FC281 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7958BC25751F44004FC281 /* ImagePicker.swift */; };
 		0ABB33A62575380E0077A37E /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB33A52575380E0077A37E /* Errors.swift */; };
 		1EB80409258FCC6E005AAADA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB80408258FCC6E005AAADA /* LoginViewController.swift */; };
+		600B8AA1258E44F9000AF7A8 /* FiatCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8AA0258E44F9000AF7A8 /* FiatCollectionViewController.swift */; };
+		600B8AA5258E4543000AF7A8 /* FiatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8AA3258E4543000AF7A8 /* FiatCell.swift */; };
+		600B8AA6258E4543000AF7A8 /* FiatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600B8AA4258E4543000AF7A8 /* FiatCell.xib */; };
+		600B8ABC2590DE04000AF7A8 /* dateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8ABB2590DE03000AF7A8 /* dateUtil.swift */; };
 		6049C37F25865B04006905B3 /* HomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6049C37E25865B04006905B3 /* HomeStoryboard.storyboard */; };
 		6049C38525865D7D006905B3 /* CryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6049C38325865D7D006905B3 /* CryptoCell.swift */; };
 		6049C38625865D7D006905B3 /* CryptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6049C38425865D7D006905B3 /* CryptoCell.xib */; };
@@ -20,7 +24,6 @@
 		6070537B256BC3640091F62C /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60705377256BC3640091F62C /* CurrencyModel.swift */; };
 		6070537C256BC3640091F62C /* CurrencyInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60705378256BC3640091F62C /* CurrencyInfo.storyboard */; };
 		6070537D256BC3640091F62C /* NeworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60705379256BC3640091F62C /* NeworkManager.swift */; };
-		60D18FC8256BCF44006E5A94 /* CurrencyBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D18FC7256BCF44006E5A94 /* CurrencyBaseViewController.swift */; };
 		60E14EB4258642320044E59E /* HomeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E14EB3258642320044E59E /* HomeCellModel.swift */; };
 		60E14EB8258644140044E59E /* FiatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E14EB7258644140044E59E /* FiatModel.swift */; };
 		60E14EBC258644430044E59E /* CurrCryptoInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E14EBB258644430044E59E /* CurrCryptoInfoModel.swift */; };
@@ -47,6 +50,10 @@
 		0ABB33A52575380E0077A37E /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		1EB80408258FCC6E005AAADA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		399B98068D0E0CD18F8FB1DD /* Pods-crypto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-crypto.debug.xcconfig"; path = "Target Support Files/Pods-crypto/Pods-crypto.debug.xcconfig"; sourceTree = "<group>"; };
+		600B8AA0258E44F9000AF7A8 /* FiatCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCollectionViewController.swift; sourceTree = "<group>"; };
+		600B8AA3258E4543000AF7A8 /* FiatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCell.swift; sourceTree = "<group>"; };
+		600B8AA4258E4543000AF7A8 /* FiatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiatCell.xib; sourceTree = "<group>"; };
+		600B8ABB2590DE03000AF7A8 /* dateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateUtil.swift; sourceTree = "<group>"; };
 		6049C37E25865B04006905B3 /* HomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryboard.storyboard; sourceTree = "<group>"; };
 		6049C38325865D7D006905B3 /* CryptoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCell.swift; sourceTree = "<group>"; };
 		6049C38425865D7D006905B3 /* CryptoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CryptoCell.xib; sourceTree = "<group>"; };
@@ -54,7 +61,6 @@
 		60705377256BC3640091F62C /* CurrencyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		60705378256BC3640091F62C /* CurrencyInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CurrencyInfo.storyboard; sourceTree = "<group>"; };
 		60705379256BC3640091F62C /* NeworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeworkManager.swift; sourceTree = "<group>"; };
-		60D18FC7256BCF44006E5A94 /* CurrencyBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyBaseViewController.swift; sourceTree = "<group>"; };
 		60E14EB3258642320044E59E /* HomeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellModel.swift; sourceTree = "<group>"; };
 		60E14EB7258644140044E59E /* FiatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatModel.swift; sourceTree = "<group>"; };
 		60E14EBB258644430044E59E /* CurrCryptoInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrCryptoInfoModel.swift; sourceTree = "<group>"; };
@@ -113,6 +119,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		600B8ABA2590DDE7000AF7A8 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				600B8ABB2590DE03000AF7A8 /* dateUtil.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		603A5DD0258BA1FB00A074E3 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +140,8 @@
 			children = (
 				6049C38325865D7D006905B3 /* CryptoCell.swift */,
 				6049C38425865D7D006905B3 /* CryptoCell.xib */,
+				600B8AA3258E4543000AF7A8 /* FiatCell.swift */,
+				600B8AA4258E4543000AF7A8 /* FiatCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -134,8 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				60705378256BC3640091F62C /* CurrencyInfo.storyboard */,
-				60D18FC7256BCF44006E5A94 /* CurrencyBaseViewController.swift */,
 				60705376256BC3640091F62C /* CurrencyInfoViewController.swift */,
+				600B8AA0258E44F9000AF7A8 /* FiatCollectionViewController.swift */,
 			);
 			path = CurrencyInfo;
 			sourceTree = "<group>";
@@ -165,6 +181,7 @@
 		919DD75F25399C8F0030B3E1 = {
 			isa = PBXGroup;
 			children = (
+				600B8ABA2590DDE7000AF7A8 /* utils */,
 				919DD76A25399C8F0030B3E1 /* crypto */,
 				919DD76925399C8F0030B3E1 /* Products */,
 				429DFC5B488DD55D92127971 /* Pods */,
@@ -183,21 +200,24 @@
 		919DD76A25399C8F0030B3E1 /* crypto */ = {
 			isa = PBXGroup;
 			children = (
-				603A5DD0258BA1FB00A074E3 /* Chart */,
-				60705379256BC3640091F62C /* NeworkManager.swift */,
-				6049C38125865D38006905B3 /* Cells */,
-				60E14EB6258643FF0044E59E /* Models */,
-				60E14EB1258641CA0044E59E /* Home */,
-				6070537F256BC36E0091F62C /* CurrencyInfo */,
 				919DD76B25399C8F0030B3E1 /* AppDelegate.swift */,
-				919DD76D25399C8F0030B3E1 /* SceneDelegate.swift */,
-				919DD76F25399C8F0030B3E1 /* ViewController.swift */,
-				919DD77125399C8F0030B3E1 /* Main.storyboard */,
 				919DD77425399C920030B3E1 /* Assets.xcassets */,
 				919DD77625399C920030B3E1 /* LaunchScreen.storyboard */,
 				919DD77925399C920030B3E1 /* Info.plist */,
 				0A232BF5256C100100495C7F /* User */,
+				6049C38125865D38006905B3 /* Cells */,
+				603A5DD0258BA1FB00A074E3 /* Chart */,
 				0A232BF8256C10B900495C7F /* consts.swift */,
+				6070537F256BC36E0091F62C /* CurrencyInfo */,
+				60E14EB1258641CA0044E59E /* Home */,
+				919DD77925399C920030B3E1 /* Info.plist */,
+				919DD77625399C920030B3E1 /* LaunchScreen.storyboard */,
+				919DD77125399C8F0030B3E1 /* Main.storyboard */,
+				60E14EB6258643FF0044E59E /* Models */,
+				60705379256BC3640091F62C /* NeworkManager.swift */,
+				919DD76D25399C8F0030B3E1 /* SceneDelegate.swift */,
+				0A232BF5256C100100495C7F /* User */,
+				919DD76F25399C8F0030B3E1 /* ViewController.swift */,
 			);
 			path = crypto;
 			sourceTree = "<group>";
@@ -281,6 +301,7 @@
 				6049C37F25865B04006905B3 /* HomeStoryboard.storyboard in Resources */,
 				919DD77525399C920030B3E1 /* Assets.xcassets in Resources */,
 				919DD77325399C8F0030B3E1 /* Main.storyboard in Resources */,
+				600B8AA6258E4543000AF7A8 /* FiatCell.xib in Resources */,
 				6070537C256BC3640091F62C /* CurrencyInfo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,11 +355,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60D18FC8256BCF44006E5A94 /* CurrencyBaseViewController.swift in Sources */,
+				600B8ABC2590DE04000AF7A8 /* dateUtil.swift in Sources */,
 				6049C38525865D7D006905B3 /* CryptoCell.swift in Sources */,
 				6070537B256BC3640091F62C /* CurrencyModel.swift in Sources */,
 				1EB80409258FCC6E005AAADA /* LoginViewController.swift in Sources */,
 				60E14EBC258644430044E59E /* CurrCryptoInfoModel.swift in Sources */,
+				600B8AA5258E4543000AF7A8 /* FiatCell.swift in Sources */,
 				60E14EB8258644140044E59E /* FiatModel.swift in Sources */,
 				919DD77025399C8F0030B3E1 /* ViewController.swift in Sources */,
 				0ABB33A62575380E0077A37E /* Errors.swift in Sources */,
@@ -347,6 +369,7 @@
 				919DD7822539ACAA0030B3E1 /* UserViewController.swift in Sources */,
 				919DD76C25399C8F0030B3E1 /* AppDelegate.swift in Sources */,
 				919DD78A2539BAF70030B3E1 /* UserModel.swift in Sources */,
+				600B8AA1258E44F9000AF7A8 /* FiatCollectionViewController.swift in Sources */,
 				6070537D256BC3640091F62C /* NeworkManager.swift in Sources */,
 				0A232BF7256C103400495C7F /* ProfileViewController.swift in Sources */,
 				0A7958BD25751F44004FC281 /* ImagePicker.swift in Sources */,
@@ -504,14 +527,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G5MJDSF3PC;
+				DEVELOPMENT_TEAM = 2JFX7XT249;
 				INFOPLIST_FILE = crypto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.crypto;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.cryptoCurrency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -525,14 +548,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G5MJDSF3PC;
+				DEVELOPMENT_TEAM = 2JFX7XT249;
 				INFOPLIST_FILE = crypto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.crypto;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.cryptoCurrency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
