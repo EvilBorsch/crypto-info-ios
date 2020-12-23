@@ -9,8 +9,26 @@ import UIKit
 
 import Charts
 import TinyConstraints
+import Alamofire
+
+
+struct priceData: Codable {
+    let open: Double
+    let date: String
+}
+
+struct Coins: Codable {
+    let baseCurrency: String
+    let priceData: [priceData]
+    let quoteCurrency: String
+}
+
+let startDate = "2020-12-10" // related to variable "start"
+let token = "6f2a566c0934c31be8a2b584d8270ae100bd8721"
+let frequency = "1day"
 
 class ChartViewController: UIViewController {
+    
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
         chartView.backgroundColor = .systemBlue
@@ -46,7 +64,7 @@ class ChartViewController: UIViewController {
         
         super.viewDidLoad()
         
-        setData()
+        setData(symb: "btc")
 
         // Do any additional setup after loading the view.
     }
@@ -55,44 +73,74 @@ class ChartViewController: UIViewController {
         print(entry)
     }
     
-    func setData(){
-        let set1 = LineChartDataSet(entries:yValues, label: "$ - time")
-        set1.mode = .cubicBezier
-        set1.drawCirclesEnabled = false
-        set1.lineWidth = 3
-        set1.setColor(.white)
-        set1.fill = Fill(color: .white)
-        set1.fillAlpha = 0.8
-        set1.drawFilledEnabled = true
-        set1.drawHorizontalHighlightIndicatorEnabled = false
-        set1.highlightColor = .systemRed
-        let data = LineChartData(dataSet: set1)
-        data.setDrawValues(false)
-        lineChartView.data = data
+    func setData(symb: String){
+        var xyPairs: [(day: Int, price: Double)] = []
+
+        let res = self.getXYLastWeek(symbol: symb,completion: {result in
+            switch result {
+            case .success(let coins):
+                var dayOfMonth = 10
+                
+                for data in coins[0].priceData {
+                    xyPairs.append((day: dayOfMonth, price: data.open))
+                    dayOfMonth += 1
+                }
+
+                for xyPair in xyPairs {
+                    self.yValues.append(ChartDataEntry(x:Double(xyPair.day) , y:xyPair.price))
+                }
+              
+                
+                let set1 = LineChartDataSet(entries:self.yValues, label: "")
+                set1.mode = .cubicBezier
+                set1.drawCirclesEnabled = false
+                set1.lineWidth = 3
+                set1.setColor(.white)
+                set1.fill = Fill(color: .white)
+                set1.fillAlpha = 0.8
+                set1.drawFilledEnabled = true
+                set1.drawHorizontalHighlightIndicatorEnabled = false
+                set1.highlightColor = .systemRed
+                let data = LineChartData(dataSet: set1)
+                data.setDrawValues(false)
+                self.lineChartView.data = data
+                
+            case .failure(let error):
+                debugPrint(error)
+            }
+            
+        })
+    
         
     }
     
-    let yValues:[ChartDataEntry] = [
-        ChartDataEntry(x:0.0, y:10.0),
-        ChartDataEntry(x:1.0, y:5.0),
-        ChartDataEntry(x:2.0, y:7.0),
-        ChartDataEntry(x:3.0, y:5.0),
-        ChartDataEntry(x:4.0, y:10.0),
-        ChartDataEntry(x:5.0, y:6.0),
-        ChartDataEntry(x:6.0, y:8.0),
-        ChartDataEntry(x:7.0, y:5.0),
-        ChartDataEntry(x:8.0, y:10.0),
-    
-    ]
+    func getXYLastWeek(symbol: String, completion: @escaping (Result<[Coins], Error>) -> Void) {
+        let ticker = symbol + "usd"
+        let url1 = URL(string:"https://api.tiingo.com/tiingo/crypto/prices?tickers="+ticker+"&startDate="+startDate+"&resampleFreq="+frequency+"&token="+token)!
+        
+        
+        AF.request(url1).responseJSON { response in
+            switch response.result {
+            
+            case .success:
+                do {
+                    let prices = try JSONDecoder().decode([Coins].self, from: response.data!)
+                    completion(.success(prices))
+                    
+                  
+                } catch let error as NSError {
+                    print("Failed to load: \(error.localizedDescription)")
+                    print(error)
+                }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            case let .failure(error):
+                print("Request error: \(error.localizedDescription)")
+            }
+        }
     }
-    */
+    
+    var yValues:[ChartDataEntry] = []
+
+
 
 }
