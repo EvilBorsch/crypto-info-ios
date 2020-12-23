@@ -48,9 +48,7 @@
                                                 <rect key="frame" x="175" y="0.0" width="175" height="30"/>
                                                 <state key="normal" title="Not registered?"/>
                                                 <connections>
-                                                    <segue destination="fEF-c7-xUJ" kind="popoverPresentation" popoverAnchorView="Sll-t9-r5W" id="pE1-7V-iSu">
-                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                    </segue>
+                                                    <action selector="clickRegitster:" destination="jtG-DS-P3q" eventType="touchUpInside" id="UZc-bC-Uj7"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -78,6 +76,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wtx-Rx-uZf"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Sign in" image="person" catalog="system" selectedImage="person" id="Po3-OI-Wnk"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="EmailField" destination="Suy-0c-dI3" id="JzT-sh-Jme"/>
                         <outlet property="PasswordField" destination="ypR-pA-OcO" id="ZDh-QJ-g1H"/>
@@ -92,11 +92,11 @@
             <objects>
                 <viewController storyboardIdentifier="sign_up" title="Register" id="fEF-c7-xUJ" customClass="ProfileViewController" customModule="crypto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AEv-F3-HRc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OzG-YT-BEE">
-                                <rect key="frame" x="32" y="317" width="350" height="208.5"/>
+                                <rect key="frame" x="32" y="343.5" width="350" height="209"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GCn-WB-MUF">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="34"/>
@@ -131,10 +131,10 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CWg-xa-ktF">
-                                        <rect key="frame" x="0.0" y="168" width="350" height="40.5"/>
+                                        <rect key="frame" x="0.0" y="168" width="350" height="41"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="clM-y9-qFt">
-                                                <rect key="frame" x="0.0" y="0.0" width="175" height="40.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="175" height="41"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hij-mj-d5e">
                                                         <rect key="frame" x="0.0" y="2" width="175" height="16"/>
@@ -148,7 +148,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFU-qq-R0v">
-                                                        <rect key="frame" x="0.0" y="20" width="175" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="20" width="175" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -156,9 +156,10 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bn4-24-yHK">
-                                                <rect key="frame" x="175" y="0.0" width="175" height="40.5"/>
-                                                <state key="normal" title="Sign Up"/>
+                                                <rect key="frame" x="175" y="0.0" width="175" height="41"/>
+                                                <state key="normal" title="Already registered?"/>
                                                 <connections>
+                                                    <action selector="goToLoginClick:" destination="fEF-c7-xUJ" eventType="touchUpInside" id="5iy-wo-otp"/>
                                                     <action selector="signUpButtonClick:" destination="fEF-c7-xUJ" eventType="touchUpInside" id="3Cv-MW-Oi7"/>
                                                 </connections>
                                             </button>
@@ -169,21 +170,42 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek5-Qm-NTh">
-                                <rect key="frame" x="120" y="213" width="169" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek5-Qm-NTh">
+                                <rect key="frame" x="120" y="213" width="208" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="SVr-06-WGe"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnQ-oC-ori">
+                                <rect key="frame" x="29" y="583" width="350" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="bdA-QE-Tkw"/>
+                                </constraints>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpButtonClick:" destination="fEF-c7-xUJ" eventType="touchUpInside" id="vHQ-WL-AKy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Llg-mV-p7n" firstAttribute="bottom" secondItem="PnQ-oC-ori" secondAttribute="bottom" constant="177" id="Ibg-CP-j3m"/>
+                            <constraint firstItem="ek5-Qm-NTh" firstAttribute="top" secondItem="Llg-mV-p7n" secondAttribute="top" constant="169" id="JeJ-WZ-c4H"/>
+                            <constraint firstItem="Llg-mV-p7n" firstAttribute="trailing" secondItem="PnQ-oC-ori" secondAttribute="trailing" constant="35" id="R5H-Ti-GrF"/>
+                            <constraint firstItem="PnQ-oC-ori" firstAttribute="top" secondItem="OzG-YT-BEE" secondAttribute="bottom" constant="30.5" id="W6N-sG-XoF"/>
+                            <constraint firstItem="PnQ-oC-ori" firstAttribute="leading" secondItem="Llg-mV-p7n" secondAttribute="leading" constant="29" id="adI-KW-geg"/>
+                            <constraint firstItem="ek5-Qm-NTh" firstAttribute="centerX" secondItem="PnQ-oC-ori" secondAttribute="centerX" constant="20" id="bHR-Yi-EbK"/>
+                            <constraint firstItem="ek5-Qm-NTh" firstAttribute="leading" secondItem="Llg-mV-p7n" secondAttribute="leading" constant="120" id="cd9-4K-fsc"/>
                             <constraint firstItem="OzG-YT-BEE" firstAttribute="centerX" secondItem="AEv-F3-HRc" secondAttribute="centerX" id="mO9-tc-kp4"/>
                             <constraint firstItem="OzG-YT-BEE" firstAttribute="centerY" secondItem="AEv-F3-HRc" secondAttribute="centerY" id="oro-ei-naP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Llg-mV-p7n"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Sign up" image="person" catalog="system" selectedImage="person" id="ptA-aT-Vfx"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="EmailTextField" destination="GCn-WB-MUF" id="EVT-Jq-Pae"/>
                         <outlet property="ImageView" destination="Hij-mj-d5e" id="RJ2-2g-hpL"/>
@@ -200,6 +222,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="person" catalog="system" width="64" height="58"/>
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
 </document>

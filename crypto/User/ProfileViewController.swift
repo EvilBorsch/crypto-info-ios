@@ -8,6 +8,8 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet var RepeatPasswordTextField: UITextField!
 
+
+    
     @IBOutlet var NameTextField: UITextField!
 
     @IBOutlet var signInBtn: UIButton!
@@ -15,11 +17,15 @@ class ProfileViewController: UIViewController {
     @IBOutlet var imageLabel: UILabel!
     @IBOutlet var ImageView: UIImageView!
     func callback(data: String) {
+        if (data != ""){
+            showError(err: data, inputController: self)
+            return
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "main_user")
-        definesPresentationContext = true
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: true)
+        DispatchQueue.main.async {
+            self.tabBarController!.viewControllers![3]=vc
+        }
     }
 
     @objc func imagePicked(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -29,7 +35,12 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    @IBAction func signUpButtonClick(_ sender: UIButton) {
+    @IBAction func goToLoginClick(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "sign_in")
+        self.tabBarController!.viewControllers![3]=vc
+    }
+    @IBAction func signUpButtonClick(_ sender: Any) {
         guard let email = EmailTextField.text else {
             print("no email")
             return
@@ -47,12 +58,15 @@ class ProfileViewController: UIViewController {
             return
         }
         if password != repeatedPassword {
-            showError(err: "Passwords is not equal")
+            showError(err: "Passwords is not equal", inputController: self)
+            return
         }
-
-        user.RegisterUser(email: email, password: password, nickname: name, avatar: ImageView.image, callback: callback)
+        var sendedImage = ImageView.image
+        if (sendedImage?.isSymbolImage == true){
+            sendedImage=nil
+        }
+        user.RegisterUser(email: email, password: password, nickname: name, avatar: sendedImage, callback: callback)
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         imageLabel.isHidden = false
