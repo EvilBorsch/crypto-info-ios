@@ -12,6 +12,8 @@ import UIKit
 class FavoriteTableViewController: UITableViewController {
 
     let key = "favorites"
+    
+    var prevWereEmpty = true
     var cryptoInfo:[HomeCellModel] = []
     var cryptoInfoFiltered:[HomeCellModel] = []
     
@@ -31,8 +33,6 @@ class FavoriteTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "Favorites"
         
-        UserDefaults.standard.set(["BTC", "ETH"], forKey: key)
-        
         tableView.refreshControl = self.refresh
         refresh.addTarget(self, action: #selector(refreshUpd), for: .valueChanged)
         
@@ -46,7 +46,6 @@ class FavoriteTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "CryptoCell", bundle: nil), forCellReuseIdentifier: "CryptoCell")
         
-        loadData()
     }
     
     @objc
@@ -67,6 +66,7 @@ class FavoriteTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
+        loadData()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -111,11 +111,23 @@ class FavoriteTableViewController: UITableViewController {
         return cell
     }
     
+    func getModel(at index: Int) -> HomeCellModel {
+        if self.isSearch() {
+            return self.cryptoInfoFiltered[index]
+        } else {
+            return self.cryptoInfo[index]
+        }
+    }
+    
     func loadData() {
         let favoriteStocks = UserDefaults.standard.stringArray(forKey: key) ?? []
         if favoriteStocks.count != 0 {
-            loadIndicator.startAnimating()
-            tableView.backgroundView = loadIndicator
+            if prevWereEmpty {
+                loadIndicator.startAnimating()
+                tableView.backgroundView = loadIndicator
+            } else {
+                tableView.backgroundView = nil
+            }
             
             let network = NetworkManager.shared
             network.GetCryptoListByStock(stocks: favoriteStocks,completion: { [weak self] res in
@@ -124,6 +136,7 @@ class FavoriteTableViewController: UITableViewController {
                     self?.cryptoInfo = info
                     DispatchQueue.main.async {
                         self?.loadIndicator.stopAnimating()
+                        self?.prevWereEmpty = false
                         self?.tableView.reloadData()
                     }
                 case .failure(let error):
@@ -131,7 +144,51 @@ class FavoriteTableViewController: UITableViewController {
                 }
                 
             })
+        } else {
+            tableView.backgroundView = getInfoLabel()
+            cryptoInfo.removeAll()
+            cryptoInfoFiltered.removeAll()
+            prevWereEmpty = true
+            tableView.reloadData()
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        var favoriteStocks = UserDefaults.standard.stringArray(forKey: key) ?? []
+        let currSymbol = getModel(at: indexPath.row).symbol
+        
+        let symbolConfig = UIImage.SymbolConfiguration(weight: .bold)
+        
+        let favoriteDelete = UIContextualAction.init(style: .normal, title: "Remove from favorites", handler:{ (action, view, success) in
+            favoriteStocks = favoriteStocks.filter({(symbol) -> Bool in return symbol != currSymbol})
+            
+            UserDefaults.standard.set(favoriteStocks, forKey: self.key)
+            
+            let currInfoIdx = self.cryptoInfo.firstIndex(where: { (model) -> Bool in
+                model.symbol == currSymbol
+            }) ?? -1
+            if currInfoIdx != -1 {
+                self.cryptoInfo.remove(at: currInfoIdx)
+            }
+            
+            let currInfoFilteredIdx = self.cryptoInfoFiltered.firstIndex(where: { (model) -> Bool in
+                model.symbol == currSymbol
+            }) ?? -1
+            if currInfoFilteredIdx != -1 {
+                self.cryptoInfoFiltered.remove(at: currInfoIdx)
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            if self.cryptoInfo.count == 0 {
+                tableView.backgroundView = self.getInfoLabel()
+                self.prevWereEmpty = true
+            }
+        })
+        favoriteDelete.image = UIImage(systemName: "star.slash.fill", withConfiguration: symbolConfig)
+        favoriteDelete.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [favoriteDelete])
     }
 }
 

@@ -8,7 +8,9 @@ import UIKit
 import Foundation
 
 class HomeViewController: UIViewController {
-
+    
+    let favKey = "favorites"
+    
     @IBOutlet weak var tableView: UITableView!
     
     let search = UISearchController(searchResultsController: nil)
@@ -41,13 +43,12 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "CryptoCell", bundle: nil), forCellReuseIdentifier: "CryptoCell")
-        
         loadInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        tableView.reloadData()
         navigationController?.navigationItem.largeTitleDisplayMode = .always
     }
     
@@ -86,17 +87,12 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
         } else {
             return homeCellModels.count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "CurrencyInfo", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CurrencyInfo") as! CurrencyInfoViewController
-        if isSearch() {
-            vc.currName = homeCellModelsFiltered[indexPath.row].name
-        } else {
-            vc.currName = homeCellModels[indexPath.row].name
-        }
+        vc.currName = getModel(at: indexPath.row).name
         tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -106,12 +102,8 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        if isSearch() {
-            cell.configure(with: homeCellModelsFiltered[indexPath.row])
-        } else {
-            cell.configure(with: homeCellModels[indexPath.row])
-        }
-        
+        cell.configure(with: getModel(at: indexPath.row))
+
         return cell
     }
         
@@ -119,17 +111,41 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
         return 110
     }
     
+    func getModel(at index: Int) -> HomeCellModel {
+        if self.isSearch() {
+            return self.homeCellModelsFiltered[index]
+        } else {
+            return self.homeCellModels[index]
+        }
+    }
+    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let favorite = UIContextualAction.init(style: .normal, title: "Add to favorites", handler:{ (action, view, success) in
-            
-        })
+        
+        var favoriteStocks = UserDefaults.standard.stringArray(forKey: favKey) ?? []
+        let currSymbol = getModel(at: indexPath.row).symbol
         
         let symbolConfig = UIImage.SymbolConfiguration(weight: .bold)
         
-        favorite.image = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
-        favorite.backgroundColor = .systemBlue
-        
-        return UISwipeActionsConfiguration(actions: [favorite])
+        if favoriteStocks.contains(currSymbol) {
+            let favoriteDelete = UIContextualAction.init(style: .normal, title: "Remove from favorites", handler:{ (action, view, success) in
+                favoriteStocks = favoriteStocks.filter({(symbol) -> Bool in return symbol != currSymbol})
+                UserDefaults.standard.set(favoriteStocks, forKey: self.favKey)
+                tableView.reloadData()
+            })
+            favoriteDelete.image = UIImage(systemName: "star.slash.fill", withConfiguration: symbolConfig)
+            favoriteDelete.backgroundColor = .systemRed
+            return UISwipeActionsConfiguration(actions: [favoriteDelete])
+        } else {
+            let favoriteAdd = UIContextualAction.init(style: .normal, title: "Add to favorites", handler:{ (action, view, success) in
+                success(true)
+                favoriteStocks.append(currSymbol)
+                UserDefaults.standard.set(favoriteStocks, forKey: self.favKey)
+                tableView.reloadData()
+            })
+            favoriteAdd.image = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
+            favoriteAdd.backgroundColor = .systemBlue
+            return UISwipeActionsConfiguration(actions: [favoriteAdd])
+        }
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
