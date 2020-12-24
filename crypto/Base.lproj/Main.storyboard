@@ -9,34 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection-->
-        <scene sceneID="Si2-um-Bx4">
-            <objects>
-                <viewController title="Collection" id="5z2-nK-OTx" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oDM-hP-SaH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="collection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJa-zo-3dt">
-                                <rect key="frame" x="170" y="437.5" width="74" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="x9h-co-KvM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="zJa-zo-3dt" firstAttribute="centerX" secondItem="oDM-hP-SaH" secondAttribute="centerX" id="MJy-o6-IDs"/>
-                            <constraint firstItem="zJa-zo-3dt" firstAttribute="centerY" secondItem="oDM-hP-SaH" secondAttribute="centerY" id="up9-Op-uih"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="star" catalog="system" id="AQ3-24-7w1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L3u-kJ-fRP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1784" y="-17"/>
-        </scene>
         <!--Trade-->
         <scene sceneID="k5h-FT-BS8">
             <objects>
@@ -143,7 +115,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Y5a-9b-mwC" kind="relationship" relationship="viewControllers" id="1g9-0d-YIe"/>
-                        <segue destination="5z2-nK-OTx" kind="relationship" relationship="viewControllers" id="isP-PL-Twu"/>
+                        <segue destination="mHn-bM-NvS" kind="relationship" relationship="viewControllers" id="JVM-Eb-TVK"/>
                         <segue destination="ucz-k6-VPN" kind="relationship" relationship="viewControllers" id="xaF-IB-mPN"/>
                         <segue destination="c8o-eg-q0h" kind="relationship" relationship="viewControllers" id="fZX-d5-diw"/>
                     </connections>
@@ -151,6 +123,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRW-Tq-xCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="648" y="-293"/>
+        </scene>
+        <!--Favorite-->
+        <scene sceneID="ed5-wQ-sNB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Favorite" id="mHn-bM-NvS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="KML-Gt-YME"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kNi-8c-EgX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1347" y="-64"/>
         </scene>
         <!--ProfileStoryBoard-->
         <scene sceneID="nfS-DO-puV">
@@ -174,7 +156,6 @@
     <resources>
         <image name="coloncurrencysign.circle" catalog="system" width="128" height="121"/>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

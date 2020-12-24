@@ -28,6 +28,7 @@ enum NetError: Error {
 protocol CurrNetProto: AnyObject {
     func GetCryptoByName(name: String, completion: @escaping (Result<CurrencyModel, Error>) -> Void)
     func GetCryptoListAll(completion: @escaping (Result<[HomeCellModel], Error>) -> Void)
+    func GetCryptoListByStock(stocks:[String], completion: @escaping (Result<[HomeCellModel], Error>) -> Void)
 }
 
 final class NetworkManager: CurrNetProto {
@@ -65,6 +66,33 @@ final class NetworkManager: CurrNetProto {
     
     func GetCryptoListAll(completion: @escaping (Result<[HomeCellModel], Error>) -> Void) {
         let urlString = baseUrl + "/list"
+        
+        AF.request(urlString).responseJSON(completionHandler: {response in
+            switch response.result{
+            case .success:
+                guard let data = response.data, !data.isEmpty else {
+                    completion(.failure(NetError.noDataInRequest))
+                    return
+                }
+                let decoder = JSONDecoder()
+                do {
+                    let info = try decoder.decode([HomeCellModel].self, from: data)
+                    completion(.success(info))
+                    return
+                } catch {
+                    completion(.failure(NetError.decodeError))
+                    return
+                }
+            case .failure(let error):
+                debugPrint(error)
+                completion(.failure(NetError.requestFailure))
+                return
+            }
+        })
+    }
+    
+    func GetCryptoListByStock(stocks:[String], completion: @escaping (Result<[HomeCellModel], Error>) -> Void) {
+        let urlString = baseUrl + "/list?names=\(stocks.joined(separator: ","))"
         
         AF.request(urlString).responseJSON(completionHandler: {response in
             switch response.result{

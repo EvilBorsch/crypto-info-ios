@@ -44,6 +44,11 @@ class CurrencyInfoViewController: UIViewController {
     
     weak var fiatVc: FiatCollectionViewController!
     
+    var addToFavoriteButton: UIBarButtonItem!
+    
+    var removeFromFavoriteButton: UIBarButtonItem!
+    
+    let favKey = "favorites"
     let loadIndicator = UIActivityIndicatorView(style: .large)
     
     var alert:UIAlertController!
@@ -56,6 +61,14 @@ class CurrencyInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addToFavoriteButton = UIBarButtonItem(
+                image: UIImage(systemName: "star")!.withRenderingMode(.alwaysTemplate),
+                style: .plain, target: self, action: #selector(handleAddClick))
+        
+        removeFromFavoriteButton = UIBarButtonItem(
+        image: UIImage(systemName: "star.fill")!.withRenderingMode(.alwaysTemplate),
+        style: .plain, target: self, action: #selector(handleRemoveClick))
         
         self.scrollView.isHidden = true
         self.title = currName
@@ -86,12 +99,31 @@ class CurrencyInfoViewController: UIViewController {
         Reddit.image = Reddit.image?.withRenderingMode(.alwaysTemplate)
         Website.image = Website.image?.withRenderingMode(.alwaysTemplate)
         Doc.image = Doc.image?.withRenderingMode(.alwaysTemplate)
-        
-         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         self.loadInfo()
+    }
     
-
+    @objc func handleAddClick() {
+        print("clicked")
+        
+        var favStocks = UserDefaults.standard.stringArray(forKey: favKey) ?? []
+        favStocks.append(self.model.symbol)
+        UserDefaults.standard.set(favStocks,forKey: favKey)
+        navigationItem.rightBarButtonItem = removeFromFavoriteButton
+    }
+    
+    @objc func handleRemoveClick() {
+        print("clicked")
+        var favStocks = UserDefaults.standard.stringArray(forKey: favKey) ?? []
+        favStocks = favStocks.filter({ (stock) -> Bool in
+            return stock != self.model.symbol
+        })
+        UserDefaults.standard.set(favStocks,forKey: favKey)
+        navigationItem.rightBarButtonItem = addToFavoriteButton
     }
     
     @objc
@@ -202,6 +234,16 @@ class CurrencyInfoViewController: UIViewController {
                     self.loadIndicator.stopAnimating()
                     self.scrollView.isHidden = false
                     self.fiatVc.fiats = self.model.currCryptoInfo.costInFiats.reversed()
+                    
+                    let favStocks = UserDefaults.standard.stringArray(forKey: self.favKey) ?? []
+                    
+                    if favStocks.contains(self.model.symbol) {
+                        self.navigationItem.rightBarButtonItem = self.removeFromFavoriteButton
+                    } else {
+                        self.navigationItem.rightBarButtonItem = self.addToFavoriteButton
+                    }
+                    
+                   
                 })
             case .failure(let error):
                 self.alert.title = "Network error"

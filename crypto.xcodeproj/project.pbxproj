@@ -17,6 +17,8 @@
 		600B8AA5258E4543000AF7A8 /* FiatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8AA3258E4543000AF7A8 /* FiatCell.swift */; };
 		600B8AA6258E4543000AF7A8 /* FiatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600B8AA4258E4543000AF7A8 /* FiatCell.xib */; };
 		600B8ABC2590DE04000AF7A8 /* dateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600B8ABB2590DE03000AF7A8 /* dateUtil.swift */; };
+		602E71D125915D4A00C8AC33 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602E71D025915D4A00C8AC33 /* FavoriteTableViewController.swift */; };
+		602E71D525915D5500C8AC33 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602E71D425915D5500C8AC33 /* Favorite.storyboard */; };
 		6049C37F25865B04006905B3 /* HomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6049C37E25865B04006905B3 /* HomeStoryboard.storyboard */; };
 		6049C38525865D7D006905B3 /* CryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6049C38325865D7D006905B3 /* CryptoCell.swift */; };
 		6049C38625865D7D006905B3 /* CryptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6049C38425865D7D006905B3 /* CryptoCell.xib */; };
@@ -54,6 +56,8 @@
 		600B8AA3258E4543000AF7A8 /* FiatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCell.swift; sourceTree = "<group>"; };
 		600B8AA4258E4543000AF7A8 /* FiatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiatCell.xib; sourceTree = "<group>"; };
 		600B8ABB2590DE03000AF7A8 /* dateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateUtil.swift; sourceTree = "<group>"; };
+		602E71D025915D4A00C8AC33 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
+		602E71D425915D5500C8AC33 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		6049C37E25865B04006905B3 /* HomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryboard.storyboard; sourceTree = "<group>"; };
 		6049C38325865D7D006905B3 /* CryptoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCell.swift; sourceTree = "<group>"; };
 		6049C38425865D7D006905B3 /* CryptoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CryptoCell.xib; sourceTree = "<group>"; };
@@ -127,6 +131,15 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		602E71CF2591309B00C8AC33 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				602E71D025915D4A00C8AC33 /* FavoriteTableViewController.swift */,
+				602E71D425915D5500C8AC33 /* Favorite.storyboard */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		603A5DD0258BA1FB00A074E3 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +194,6 @@
 		919DD75F25399C8F0030B3E1 = {
 			isa = PBXGroup;
 			children = (
-				600B8ABA2590DDE7000AF7A8 /* utils */,
 				919DD76A25399C8F0030B3E1 /* crypto */,
 				919DD76925399C8F0030B3E1 /* Products */,
 				429DFC5B488DD55D92127971 /* Pods */,
@@ -200,11 +212,10 @@
 		919DD76A25399C8F0030B3E1 /* crypto */ = {
 			isa = PBXGroup;
 			children = (
+				602E71CF2591309B00C8AC33 /* Favorites */,
+				600B8ABA2590DDE7000AF7A8 /* utils */,
 				919DD76B25399C8F0030B3E1 /* AppDelegate.swift */,
 				919DD77425399C920030B3E1 /* Assets.xcassets */,
-				919DD77625399C920030B3E1 /* LaunchScreen.storyboard */,
-				919DD77925399C920030B3E1 /* Info.plist */,
-				0A232BF5256C100100495C7F /* User */,
 				6049C38125865D38006905B3 /* Cells */,
 				603A5DD0258BA1FB00A074E3 /* Chart */,
 				0A232BF8256C10B900495C7F /* consts.swift */,
@@ -297,6 +308,7 @@
 			files = (
 				6049C38625865D7D006905B3 /* CryptoCell.xib in Resources */,
 				919DD77825399C920030B3E1 /* LaunchScreen.storyboard in Resources */,
+				602E71D525915D5500C8AC33 /* Favorite.storyboard in Resources */,
 				91D6FB48253A2D63000E740F /* ProfileStoryBoard.storyboard in Resources */,
 				6049C37F25865B04006905B3 /* HomeStoryboard.storyboard in Resources */,
 				919DD77525399C920030B3E1 /* Assets.xcassets in Resources */,
@@ -375,6 +387,7 @@
 				0A7958BD25751F44004FC281 /* ImagePicker.swift in Sources */,
 				60E14EBF258644590044E59E /* PlatformModel.swift in Sources */,
 				B52EBA63256AE8B800235205 /* HomeViewController.swift in Sources */,
+				602E71D125915D4A00C8AC33 /* FavoriteTableViewController.swift in Sources */,
 				919DD76E25399C8F0030B3E1 /* SceneDelegate.swift in Sources */,
 				60E14EB4258642320044E59E /* HomeCellModel.swift in Sources */,
 				60E14EC22586448B0044E59E /* UrlsModel.swift in Sources */,
