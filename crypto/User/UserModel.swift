@@ -2,21 +2,23 @@ import Alamofire
 import Foundation
 import UIKit
 
-class UserModel: Codable {
+public struct UserModel: Codable {
     var name: String
     var email: String
     var photo: String?
 }
 
+var globalUser = User(nickname: "", email: "", photoUrl: "")
+
 class User {
     var nickname: String
     var email: String
-    var photoUrl: String
-
-    init(nickname: String, email: String) {
+    var photoUrl: String?
+    init(nickname: String, email: String, photoUrl: String?) {
         self.nickname = nickname
         self.email = email
-        self.photoUrl=""
+        self.photoUrl = photoUrl
+        
     }
 
     func GetFromServer(callback: @escaping (Bool, String, User) -> Void) {
@@ -36,17 +38,18 @@ class User {
                     let photoUrl = user.photo ?? ""
                     self.photoUrl=photoUrl
                     callback(false, "", self)
+                    return
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
                     let dataString = String(data: response.data!, encoding: .utf8) ?? ""
                     callback(true, dataString, self)
+                    return
                 }
 
             case let .failure(error):
                 print("Request error: \(error.localizedDescription)")
             }
         }
-        callback(false, "", self)
     }
 
     func RegisterUser(email: String, password: String, nickname: String, avatar: UIImage?, callback: @escaping (String) -> Void) {

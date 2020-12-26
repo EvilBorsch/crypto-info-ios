@@ -1,8 +1,6 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    var user = User(nickname: "", email: "")
-
     @IBOutlet var EmailTextField: UITextField!
     @IBOutlet var PasswordTextField: UITextField!
 
@@ -65,7 +63,7 @@ class ProfileViewController: UIViewController {
         if (sendedImage?.isSymbolImage == true){
             sendedImage=nil
         }
-        user.RegisterUser(email: email, password: password, nickname: name, avatar: sendedImage, callback: callback)
+        globalUser.RegisterUser(email: email, password: password, nickname: name, avatar: sendedImage, callback: callback)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
