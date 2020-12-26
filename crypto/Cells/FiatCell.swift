@@ -13,7 +13,9 @@ class FiatCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var CurrName: UILabel!
     @IBOutlet weak var LastUpd: UILabel!
     @IBOutlet weak var CurrShowLabel: UILabel!
+    @IBOutlet weak var headerView: UIView!
     
+    var theme = 0
     var volume: String!
     var cost: String!
     

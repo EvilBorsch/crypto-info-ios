@@ -16,6 +16,7 @@ var urls: [Int:URL] = [:]
 class CurrencyInfoViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var minedInfo: UIStackView!
     @IBOutlet weak var currencyImage: UIImageView!
     @IBOutlet weak var Change1hView: UIView!
     @IBOutlet weak var Change24hView: UIView!
@@ -42,10 +43,18 @@ class CurrencyInfoViewController: UIViewController {
     @IBOutlet weak var Website: UIImageView!
     @IBOutlet weak var Doc: UIImageView!
     
+    
+    @IBOutlet weak var curLabel: UILabel!
+    @IBOutlet weak var mLabel: UILabel!
+    @IBOutlet weak var luLabel: UILabel!
+    @IBOutlet weak var plTokAddrLabel: UILabel!
+    @IBOutlet weak var crLabel: UILabel!
+    
+    
     weak var fiatVc: FiatCollectionViewController!
     
     var addToFavoriteButton: UIBarButtonItem!
-    
+    var theme = 0
     var removeFromFavoriteButton: UIBarButtonItem!
     
     let favKey = "favorites"
@@ -58,6 +67,8 @@ class CurrencyInfoViewController: UIViewController {
     var currName: String!
 
     let refresh = UIRefreshControl()
+    
+    let themeKey = "theme"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +94,7 @@ class CurrencyInfoViewController: UIViewController {
         
         self.refresh.addTarget(self, action: #selector(updateData), for: UIControl.Event.valueChanged)
         self.scrollView.addSubview(refresh)
-        
+
         
         Change7dView.layer.cornerRadius = 10
         Change7dView.layer.masksToBounds = true
@@ -103,12 +114,22 @@ class CurrencyInfoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        setTheme()
         self.loadInfo()
     }
     
+    func setTheme() {
+        theme = UserDefaults.standard.integer(forKey: themeKey)
+        curLabel.textColor = themeColor[theme]
+        mLabel.textColor = themeColor[theme]
+        luLabel.textColor = themeColor[theme]
+        
+        BasedOnLabel.textColor = themeColor[theme]
+        plTokAddrLabel.textColor = themeColor[theme]
+        crLabel.textColor = themeColor[theme]
+    }
+    
     @objc func handleAddClick() {
-        print("clicked")
         
         var favStocks = UserDefaults.standard.stringArray(forKey: favKey) ?? []
         favStocks.append(self.model.symbol)
@@ -117,7 +138,7 @@ class CurrencyInfoViewController: UIViewController {
     }
     
     @objc func handleRemoveClick() {
-        print("clicked")
+
         var favStocks = UserDefaults.standard.stringArray(forKey: favKey) ?? []
         favStocks = favStocks.filter({ (stock) -> Bool in
             return stock != self.model.symbol
@@ -150,6 +171,7 @@ class CurrencyInfoViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(linkTapped(tapGestureRecognizer:)))
         
+        imageView.tintColor = themeColor[theme]
         imageView.tag = tag
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tap)
@@ -162,6 +184,7 @@ class CurrencyInfoViewController: UIViewController {
         let tappedView = tapGestureRecognizer.view as! UIImageView
         
         let sfVc = SFSafariViewController(url: urls[tappedView.tag]!)
+        sfVc.preferredControlTintColor = themeColor[theme]
         sfVc.modalPresentationStyle = .pageSheet
         
         present(sfVc, animated: true, completion: nil)

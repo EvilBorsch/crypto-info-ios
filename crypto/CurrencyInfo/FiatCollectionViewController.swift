@@ -18,12 +18,16 @@ class FiatCollectionViewController: UICollectionViewController {
         }
     }
     
+    var theme = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "FiatCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+        
+        theme = UserDefaults.standard.integer(forKey: "theme")
     }
     
     override func viewDidLayoutSubviews() {
@@ -36,6 +40,12 @@ class FiatCollectionViewController: UICollectionViewController {
         let insetY = (view.frame.height - cellHeight)/2.0
         
         collectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX - 20, bottom: insetY, right: insetX)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        theme = UserDefaults.standard.integer(forKey: "theme")
     }
 }
 
@@ -56,8 +66,11 @@ extension FiatCollectionViewController {
         cell.layer.masksToBounds = true
         
         cell.layer.borderWidth = 2
-        cell.layer.borderColor = UIColor.systemBlue.cgColor
+        cell.layer.borderColor = themeColor[theme]?.cgColor
         
+        cell.headerView.backgroundColor = themeColor[theme]
+        cell.CurrShowLabel.textColor = themeColor[theme]
+        cell.LastUpd.textColor = themeColor[theme]
         cell.configure(with: fiats![indexPath.row])
         
         return cell

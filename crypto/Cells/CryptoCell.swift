@@ -8,15 +8,6 @@
 import UIKit
 import Kingfisher
 
-enum Fiats: Int {
-    case CNY = 0
-    case EUR = 1
-    case GBP = 2
-    case RUB = 3
-    case UAH = 4
-    case USD = 5
-}
-
 class HomeCell: UITableViewCell {
 
     @IBOutlet weak var icon: UIImageView!
@@ -26,13 +17,11 @@ class HomeCell: UITableViewCell {
     @IBOutlet weak var change: UILabel!
     @IBOutlet weak var changeView: UIView!
     
-    
-    var fiatType = Fiats.RUB
-    
+    var fiatType:Int = 5
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         changeView.layer.cornerRadius = 10
         changeView.layer.masksToBounds = true
     }
@@ -45,7 +34,7 @@ class HomeCell: UITableViewCell {
         icon.kf.indicatorType = .activity
         icon.kf.setImage(with: model.logoURL)
         name.text = model.name
-        cost.text = String(format: "%.2f \(model.cost[fiatType.rawValue].sign)", model.cost[fiatType.rawValue].price)
+        cost.text = String(format: "%.2f \(model.cost[fiatType].sign)", model.cost[fiatType].price)
         symbol.text = model.symbol
         if model.percentChange1h > 0 {
             change.text = String(format: "+ %.3f",  model.percentChange1h) + " %"

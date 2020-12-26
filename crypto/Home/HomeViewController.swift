@@ -19,6 +19,8 @@ class HomeViewController: UIViewController {
     var homeCellModels: [HomeCellModel] = []
     var homeCellModelsFiltered: [HomeCellModel] = []
     
+    var settingsButton:UIBarButtonItem!
+    
     func filterCells(by name: String) {
         homeCellModelsFiltered.removeAll()
         
@@ -27,10 +29,16 @@ class HomeViewController: UIViewController {
         })
     }
     
+    var theme = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Cryptoes"
+        
+        settingsButton = UIBarButtonItem(
+            image: UIImage(systemName: "gearshape")!.withRenderingMode(.alwaysTemplate),
+        style: .plain, target: self, action: #selector(openSettings))
         
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
@@ -43,13 +51,30 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "CryptoCell", bundle: nil), forCellReuseIdentifier: "CryptoCell")
-        loadInfo()
+        
+        theme = UserDefaults.standard.integer(forKey: "theme")
+        
+        navigationController?.navigationBar.tintColor = themeColor[theme]
+        tabBarController?.tabBar.tintColor = themeColor[theme]
+        
+        self.navigationItem.rightBarButtonItem = settingsButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        theme = UserDefaults.standard.integer(forKey: "theme")
+        
         tableView.reloadData()
         navigationController?.navigationItem.largeTitleDisplayMode = .always
+        
+        loadInfo()
+    }
+    
+    @objc func openSettings() {
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Settings") as! SettingsViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func loadInfo() {
@@ -101,7 +126,8 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CryptoCell") as? HomeCell else {
             return UITableViewCell()
         }
-        
+        cell.symbol.textColor = themeColor[theme]
+        cell.fiatType = UserDefaults.standard.integer(forKey: "fiat")
         cell.configure(with: getModel(at: indexPath.row))
 
         return cell
@@ -143,7 +169,7 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
                 tableView.reloadData()
             })
             favoriteAdd.image = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
-            favoriteAdd.backgroundColor = .systemBlue
+            favoriteAdd.backgroundColor = themeColor[theme]
             return UISwipeActionsConfiguration(actions: [favoriteAdd])
         }
     }
@@ -156,7 +182,7 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
         let symbolConfig = UIImage.SymbolConfiguration(weight: .bold)
         
         buy.image = UIImage(systemName: "cart.fill.badge.plus", withConfiguration: symbolConfig)
-        buy.backgroundColor = .systemGreen
+        buy.backgroundColor = themeColor[theme]
         
         let sell = UIContextualAction.init(style: .normal, title: "Sell", handler:{ (action, view, success) in
             

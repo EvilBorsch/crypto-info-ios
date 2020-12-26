@@ -62,7 +62,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18r-Ys-zdD">
                                         <rect key="frame" x="15" y="0.0" width="30.5" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last updated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyx-1P-v9s">
@@ -121,6 +121,7 @@
                 <outlet property="CurrShowLabel" destination="18r-Ys-zdD" id="2lT-Yc-YK7"/>
                 <outlet property="LastUpd" destination="gyx-1P-v9s" id="zRp-35-SdP"/>
                 <outlet property="Symbol" destination="SK4-Xk-RUv" id="uJP-Zg-vYp"/>
+                <outlet property="headerView" destination="zDR-hq-EJz" id="M5k-KN-dkQ"/>
             </connections>
             <point key="canvasLocation" x="-107.24637681159422" y="61.607142857142854"/>
         </collectionViewCell>

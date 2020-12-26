@@ -27,11 +27,13 @@ let startDate = "2020-12-10" // related to variable "start"
 let token = "6f2a566c0934c31be8a2b584d8270ae100bd8721"
 let frequency = "1day"
 
+var theme = 0
+
 class ChartViewController: UIViewController {
     
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
-        chartView.backgroundColor = .systemBlue
+        chartView.backgroundColor = themeColor[theme]
         
         chartView.rightAxis.enabled = false
         
@@ -46,7 +48,7 @@ class ChartViewController: UIViewController {
         chartView.xAxis.labelFont = .boldSystemFont(ofSize: 12)
         chartView.xAxis.setLabelCount(6, force: false)
         chartView.xAxis.labelTextColor = .white
-        chartView.xAxis.axisLineColor = .systemBlue
+        chartView.xAxis.axisLineColor = .white
         
         chartView.animate(xAxisDuration: 2.5)
         
@@ -54,6 +56,10 @@ class ChartViewController: UIViewController {
     }()
 
     override func viewDidLoad() {
+        theme = UserDefaults.standard.integer(forKey: "theme")
+        
+        lineChartView.backgroundColor = themeColor[theme]
+        
         view.addSubview(lineChartView)
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
@@ -65,8 +71,13 @@ class ChartViewController: UIViewController {
         super.viewDidLoad()
         
         setData(symb: "btc")
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        theme = UserDefaults.standard.integer(forKey: "theme")
+        let chartView = view.subviews.filter{$0 is LineChartView}
+        chartView[0].backgroundColor = themeColor[theme]
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
