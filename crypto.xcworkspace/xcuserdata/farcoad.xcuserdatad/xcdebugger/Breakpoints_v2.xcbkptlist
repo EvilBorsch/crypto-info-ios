@@ -151,16 +151,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "22A8A695-59F1-4459-8992-4795C45B1EBC"
-            shouldBeEnabled = "No"
+            uuid = "946D58E4-183F-49C8-B9AB-B00335794C75"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "crypto/Home/HomeViewController.swift"
+            filePath = "crypto/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "openSettings()"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "application(_:configurationForConnecting:options:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

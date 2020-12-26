@@ -10,10 +10,14 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet var NameTextField: UITextField!
 
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet var signInBtn: UIButton!
 
     @IBOutlet var imageLabel: UILabel!
     @IBOutlet var ImageView: UIImageView!
+    
+    var theme = 0
+    
     func callback(data: String) {
         if (data != ""){
             showError(err: data, inputController: self)
@@ -72,5 +76,14 @@ class ProfileViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(imagePicked(tapGestureRecognizer:)))
         ImageView.addGestureRecognizer(tap)
         ImageView.isUserInteractionEnabled = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        theme = UserDefaults.standard.integer(forKey: "theme")
+        signInBtn.tintColor = themeColor[theme]
+        signUpButton.tintColor = themeColor[theme]
+        
     }
 }

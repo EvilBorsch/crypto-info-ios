@@ -3,11 +3,23 @@ import UIKit
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var EmailField: UITextField!
+    @IBOutlet weak var signInbutton: UIButton!
+    @IBOutlet weak var notRegisteredButton: UIButton!
     
     @IBAction func clickRegitster(_ sender: Any) {
         let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "sign_up")
         self.tabBarController!.viewControllers![3]=vc
+    }
+    
+    var theme = 0
+    
+    override func viewWillAppear(_ animated:Bool) {
+        super.viewWillAppear(animated)
+        
+        theme = UserDefaults.standard.integer(forKey: "theme")
+        signInbutton.tintColor = themeColor[theme]
+        notRegisteredButton.tintColor = themeColor[theme]
     }
     
     @IBOutlet weak var PasswordField: UITextField!

@@ -36,9 +36,6 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Cryptoes"
         
-        settingsButton = UIBarButtonItem(
-            image: UIImage(systemName: "gearshape")!.withRenderingMode(.alwaysTemplate),
-        style: .plain, target: self, action: #selector(openSettings))
         
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
@@ -57,7 +54,6 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.tintColor = themeColor[theme]
         tabBarController?.tabBar.tintColor = themeColor[theme]
         
-        self.navigationItem.rightBarButtonItem = settingsButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,12 +65,6 @@ class HomeViewController: UIViewController {
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         
         loadInfo()
-    }
-    
-    @objc func openSettings() {
-        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "Settings") as! SettingsViewController
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     func loadInfo() {
