@@ -2,9 +2,9 @@ import UIKit
 
 class UserViewController: UIViewController {
 
-    @IBOutlet weak var emailTextField: UILabel!
     @IBOutlet weak var nicknameTextField: UILabel!
     
+    @IBOutlet weak var emailTextField: UILabel!
     @IBOutlet weak var ImageView: UIImageView!
     
 
@@ -44,11 +44,13 @@ class UserViewController: UIViewController {
 
     func userContoller() {
         //globalUser.GetFromServer(callback: callback)
+        print(globalUser.email)
         DispatchQueue.main.async {
             self.nicknameTextField.text = globalUser.nickname
             self.emailTextField.text = globalUser.email
             self.ImageView.load(globalUser.photoUrl)
             self.ImageView.isHidden=false
+            
         }
         
     }
