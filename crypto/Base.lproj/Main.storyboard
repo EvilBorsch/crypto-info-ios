@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gfC-w8-YzS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gfC-w8-YzS">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,12 +22,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="4pW-0n-GIz"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="zVa-Hs-ofa" firstAttribute="centerX" secondItem="5Yc-Sp-SSP" secondAttribute="centerX" id="ZN6-yj-ark"/>
                             <constraint firstItem="zVa-Hs-ofa" firstAttribute="centerY" secondItem="5Yc-Sp-SSP" secondAttribute="centerY" id="hwa-iE-0DL"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4pW-0n-GIz"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Trade" image="coloncurrencysign.circle" catalog="system" id="nYp-ce-Lnd"/>
                 </viewController>
@@ -40,64 +38,14 @@
         <!--User-->
         <scene sceneID="dh1-ij-pdZ">
             <objects>
-                <viewController storyboardIdentifier="main_user" title="User" id="c8o-eg-q0h" customClass="UserViewController" customModule="crypto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main_user" title="User" id="c8o-eg-q0h" customClass="EmptyUserViewController" customModule="crypto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Knb-1Y-GNa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sdX-hX-GzA">
-                                <rect key="frame" x="20" y="149" width="138" height="125"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="xxJ-98-1He">
-                                <rect key="frame" x="194" y="149" width="200" height="90"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdt-Rx-Mqc">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i5o-1F-Ypb">
-                                        <rect key="frame" x="0.0" y="56" width="200" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Qdo-6F-SM3"/>
-                                </constraints>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhk-7Z-WIX">
-                                <rect key="frame" x="113" y="561" width="189" height="73"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="73" id="vA9-7E-iQM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Выйти"/>
-                                <connections>
-                                    <action selector="deleteCookieBtnClick:" destination="c8o-eg-q0h" eventType="touchUpInside" id="tnZ-eW-xop"/>
-                                </connections>
-                            </button>
-                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="OoH-zW-Ccx"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="uhk-7Z-WIX" firstAttribute="centerX" secondItem="Knb-1Y-GNa" secondAttribute="centerX" id="38J-aF-jsc"/>
-                            <constraint firstItem="xxJ-98-1He" firstAttribute="top" secondItem="sdX-hX-GzA" secondAttribute="top" id="9Zx-SE-2p8"/>
-                            <constraint firstItem="OoH-zW-Ccx" firstAttribute="bottom" secondItem="uhk-7Z-WIX" secondAttribute="bottom" constant="179" id="GK2-18-EOm"/>
-                            <constraint firstItem="OoH-zW-Ccx" firstAttribute="bottom" secondItem="sdX-hX-GzA" secondAttribute="bottom" constant="539" id="PVs-MI-C8q"/>
-                            <constraint firstItem="uhk-7Z-WIX" firstAttribute="leading" secondItem="OoH-zW-Ccx" secondAttribute="leading" constant="113" id="WaH-aL-pcO"/>
-                            <constraint firstItem="xxJ-98-1He" firstAttribute="top" secondItem="OoH-zW-Ccx" secondAttribute="top" constant="105" id="d5Y-y8-oy2"/>
-                            <constraint firstItem="xxJ-98-1He" firstAttribute="trailing" secondItem="Knb-1Y-GNa" secondAttribute="trailingMargin" id="j6P-Mo-0Fa"/>
-                            <constraint firstItem="sdX-hX-GzA" firstAttribute="leading" secondItem="Knb-1Y-GNa" secondAttribute="leadingMargin" id="lUp-Qy-3rn"/>
-                            <constraint firstItem="xxJ-98-1He" firstAttribute="leading" secondItem="sdX-hX-GzA" secondAttribute="trailing" constant="36" id="oLH-li-y6M"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="User" image="person" catalog="system" id="cAf-En-2Ih"/>
-                    <connections>
-                        <outlet property="ImageView" destination="sdX-hX-GzA" id="3YC-Am-yvg"/>
-                        <outlet property="emailTextField" destination="i5o-1F-Ypb" id="vII-JZ-qsb"/>
-                        <outlet property="nicknameTextField" destination="mdt-Rx-Mqc" id="dL1-4J-FDB"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xi8-8X-Nyk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,10 +102,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="coloncurrencysign.circle" catalog="system" width="128" height="121"/>
-        <image name="person" catalog="system" width="128" height="117"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="coloncurrencysign.circle" catalog="system" width="64" height="60"/>
+        <image name="person" catalog="system" width="64" height="58"/>
     </resources>
 </document>

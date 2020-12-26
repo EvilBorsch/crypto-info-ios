@@ -1,7 +1,6 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    var user: User = User(nickname: "", email: "")
 
     @IBOutlet weak var EmailField: UITextField!
     
@@ -35,7 +34,8 @@ class LoginViewController: UIViewController {
             print("no password ")
             return
         }
-        user.LoginUser(email: email,password: password,callback: callback)
+        globalUser.LoginUser(email: email,password: password,callback: callback)
     }
     
 }
+
