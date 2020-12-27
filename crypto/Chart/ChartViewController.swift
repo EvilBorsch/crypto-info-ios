@@ -23,7 +23,8 @@ struct Coins: Codable {
     let quoteCurrency: String
 }
 
-let startDate = "2020-12-10" // related to variable "start"
+
+
 let token = "6f2a566c0934c31be8a2b584d8270ae100bd8721"
 let frequency = "1day"
 
@@ -31,9 +32,27 @@ var theme = 0
 
 class ChartViewController: UIViewController {
     
+    var symbol:String? {
+        didSet {
+            self.setData(symb: symbol ?? "")
+        }
+    }
+    
+    var startDate:String? {
+        didSet {
+            if symbol != nil {
+                self.setData(symb: symbol!)
+            }
+        }
+    } // related to variable "start"
+    
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
         chartView.backgroundColor = themeColor[theme]
+        
+        chartView.addSubview(loadIndicator)
+        self.loadIndicator.edgesToSuperview()
+        self.loadIndicator.startAnimating()
         
         chartView.rightAxis.enabled = false
         
@@ -50,11 +69,13 @@ class ChartViewController: UIViewController {
         chartView.xAxis.labelTextColor = .white
         chartView.xAxis.axisLineColor = .white
         
-        chartView.animate(xAxisDuration: 2.5)
-        
+        chartView.noDataText = ""
+                
         return chartView
     }()
 
+    let loadIndicator = UIActivityIndicatorView(style: .medium)
+    
     override func viewDidLoad() {
         theme = UserDefaults.standard.integer(forKey: "theme")
         
@@ -69,8 +90,7 @@ class ChartViewController: UIViewController {
 //        lineChartView.heightToWidth(of: view)
         
         super.viewDidLoad()
-        
-        setData(symb: "btc")
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,8 +110,11 @@ class ChartViewController: UIViewController {
         self.getXYLastWeek(symbol: symb,completion: {result in
             switch result {
             case .success(let coins):
-                var dayOfMonth = 10
-                
+                var dayOfMonth = 1
+
+                self.loadIndicator.stopAnimating()
+                xyPairs.removeAll()
+                self.yValues.removeAll()
                 for data in coins[0].priceData {
                     xyPairs.append((day: dayOfMonth, price: data.open))
                     dayOfMonth += 1
@@ -115,6 +138,8 @@ class ChartViewController: UIViewController {
                 let data = LineChartData(dataSet: set1)
                 data.setDrawValues(false)
                 self.lineChartView.data = data
+                self.lineChartView.animate(xAxisDuration: 1.5)
+
                 
             case .failure(let error):
                 debugPrint(error)
@@ -126,8 +151,12 @@ class ChartViewController: UIViewController {
     }
     
     func getXYLastWeek(symbol: String, completion: @escaping (Result<[Coins], Error>) -> Void) {
+        if startDate == nil {
+            completion(.failure(NetError.noDataInRequest))
+            return
+        }
         let ticker = symbol + "usd"
-        let url1 = URL(string:"https://api.tiingo.com/tiingo/crypto/prices?tickers="+ticker+"&startDate="+startDate+"&resampleFreq="+frequency+"&token="+token)!
+        let url1 = URL(string:"https://api.tiingo.com/tiingo/crypto/prices?tickers="+ticker+"&startDate="+startDate!+"&resampleFreq="+frequency+"&token="+token)!
         
         
         AF.request(url1).responseJSON { response in

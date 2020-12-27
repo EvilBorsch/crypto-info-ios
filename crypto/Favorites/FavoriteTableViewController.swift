@@ -66,6 +66,8 @@ class FavoriteTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
+        theme = UserDefaults.standard.integer(forKey: "theme")
+        navigationController?.navigationBar.tintColor = themeColor[theme]
         loadData()
     }
 
@@ -185,6 +187,7 @@ class FavoriteTableViewController: UITableViewController {
                 tableView.backgroundView = self.getInfoLabel()
                 self.prevWereEmpty = true
             }
+            success(true)
         })
         favoriteDelete.image = UIImage(systemName: "star.slash.fill", withConfiguration: symbolConfig)
         favoriteDelete.backgroundColor = .systemRed

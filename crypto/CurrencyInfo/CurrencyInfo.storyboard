@@ -401,6 +401,7 @@
                         <outlet property="TokenAddressLabel" destination="7EU-mI-NC6" id="1Ux-rd-Z0K"/>
                         <outlet property="Twitter" destination="sJc-Tu-3DP" id="UOA-LF-Mk2"/>
                         <outlet property="Website" destination="HlZ-rA-Qpc" id="i1w-BH-UTn"/>
+                        <outlet property="chartView" destination="fVk-Ym-grc" id="pFW-3l-Vrk"/>
                         <outlet property="crLabel" destination="zDe-i0-VTL" id="kOY-xP-LhX"/>
                         <outlet property="curLabel" destination="Ndo-Kv-FYL" id="Feo-4j-tO1"/>
                         <outlet property="currencyImage" destination="Qqr-t1-4dJ" id="mf3-Li-RgQ"/>
@@ -419,8 +420,8 @@
         <scene sceneID="1eJ-hb-lov">
             <objects>
                 <viewController storyboardIdentifier="ChartStoryboard" id="kzX-Yq-AAl" customClass="ChartViewController" customModule="crypto" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Jho-xa-AHj">
-                        <rect key="frame" x="0.0" y="0.0" width="349.33333333333331" height="210"/>
+                    <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="Jho-xa-AHj">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="210"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="dV6-Ma-paV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -436,7 +437,7 @@
             <objects>
                 <collectionViewController id="Y4P-hh-ZsC" customClass="FiatCollectionViewController" customModule="crypto" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="xfc-YN-9Rr" userLabel="30">
-                        <rect key="frame" x="0.0" y="0.0" width="389.33333333333331" height="115"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="115"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="10" id="VmI-xj-pC3">

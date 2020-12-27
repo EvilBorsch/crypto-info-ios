@@ -144,6 +144,7 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
         
         if favoriteStocks.contains(currSymbol) {
             let favoriteDelete = UIContextualAction.init(style: .normal, title: "Remove from favorites", handler:{ (action, view, success) in
+                success(true)
                 favoriteStocks = favoriteStocks.filter({(symbol) -> Bool in return symbol != currSymbol})
                 UserDefaults.standard.set(favoriteStocks, forKey: self.favKey)
                 tableView.reloadData()
@@ -164,25 +165,6 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let buy = UIContextualAction.init(style: .normal, title: "Buy", handler:{ (action, view, success) in
-            
-        })
-        
-        let symbolConfig = UIImage.SymbolConfiguration(weight: .bold)
-        
-        buy.image = UIImage(systemName: "cart.fill.badge.plus", withConfiguration: symbolConfig)
-        buy.backgroundColor = themeColor[theme]
-        
-        let sell = UIContextualAction.init(style: .normal, title: "Sell", handler:{ (action, view, success) in
-            
-        })
-        
-        sell.image = UIImage(systemName: "cart.fill.badge.minus", withConfiguration: symbolConfig)
-        sell.backgroundColor = .systemRed
-        
-        return UISwipeActionsConfiguration(actions: [buy, sell])
-    }
 }
 
 extension HomeViewController: UISearchResultsUpdating {

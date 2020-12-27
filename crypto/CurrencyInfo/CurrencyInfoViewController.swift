@@ -15,6 +15,7 @@ var urls: [Int:URL] = [:]
 
 class CurrencyInfoViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var chartView: UIView!
     
     @IBOutlet weak var minedInfo: UIStackView!
     @IBOutlet weak var currencyImage: UIImageView!
@@ -52,7 +53,9 @@ class CurrencyInfoViewController: UIViewController {
     
     
     weak var fiatVc: FiatCollectionViewController!
+    weak var chartVc: ChartViewController!
     
+    var isSevenDay = true
     var addToFavoriteButton: UIBarButtonItem!
     var theme = 0
     var removeFromFavoriteButton: UIBarButtonItem!
@@ -72,6 +75,9 @@ class CurrencyInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(chartTapped(tapGestureRecognizer:)))
+        chartView.addGestureRecognizer(tap)
         
         addToFavoriteButton = UIBarButtonItem(
                 image: UIImage(systemName: "star")!.withRenderingMode(.alwaysTemplate),
@@ -127,6 +133,9 @@ class CurrencyInfoViewController: UIViewController {
         BasedOnLabel.textColor = themeColor[theme]
         plTokAddrLabel.textColor = themeColor[theme]
         crLabel.textColor = themeColor[theme]
+        
+        navigationController?.navigationBar.tintColor = themeColor[theme]
+
     }
     
     @objc func handleAddClick() {
@@ -190,6 +199,11 @@ class CurrencyInfoViewController: UIViewController {
         present(sfVc, animated: true, completion: nil)
     }
     
+    @objc func chartTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        isSevenDay = !isSevenDay
+        updateChart()
+    }
+    
  
     
     func updateView(){
@@ -243,6 +257,20 @@ class CurrencyInfoViewController: UIViewController {
         
     }
     
+    func updateChart() {
+        let dateToday = Date()
+        
+        let date:Date
+        if (self.isSevenDay) {
+            date = Calendar.current.date(byAdding: .day,value: -7, to: dateToday)!
+        } else {
+            date = Calendar.current.date(byAdding: .month,value: -1, to: dateToday)!
+        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd"
+        self.chartVc.startDate = formatter.string(from: date)
+    }
+    
     func loadInfo() {
         let network = NetworkManager.shared
         network.GetCryptoByName(name: currName, completion: { [weak self] res in
@@ -257,6 +285,8 @@ class CurrencyInfoViewController: UIViewController {
                     self.loadIndicator.stopAnimating()
                     self.scrollView.isHidden = false
                     self.fiatVc.fiats = self.model.currCryptoInfo.costInFiats.reversed()
+                    self.chartVc.symbol = self.model.symbol.lowercased()
+                    self.updateChart()
                     
                     let favStocks = UserDefaults.standard.stringArray(forKey: self.favKey) ?? []
                     
@@ -298,6 +328,10 @@ class CurrencyInfoViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FiatSegue" {
             fiatVc = (segue.destination as! FiatCollectionViewController)
+        }
+        
+        if segue.identifier == "ChartSegue" {
+            chartVc = (segue.destination as! ChartViewController)
         }
     }
 }
