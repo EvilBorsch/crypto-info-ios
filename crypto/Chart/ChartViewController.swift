@@ -87,7 +87,7 @@ class ChartViewController: UIViewController {
     func setData(symb: String){
         var xyPairs: [(day: Int, price: Double)] = []
 
-        let res = self.getXYLastWeek(symbol: symb,completion: {result in
+        self.getXYLastWeek(symbol: symb,completion: {result in
             switch result {
             case .success(let coins):
                 var dayOfMonth = 10
