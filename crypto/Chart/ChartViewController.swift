@@ -75,6 +75,7 @@ class ChartViewController: UIViewController {
     }()
 
     let loadIndicator = UIActivityIndicatorView(style: .medium)
+    let infoLabel = UILabel()
     
     override func viewDidLoad() {
         theme = UserDefaults.standard.integer(forKey: "theme")
@@ -82,6 +83,12 @@ class ChartViewController: UIViewController {
         lineChartView.backgroundColor = themeColor[theme]
         
         view.addSubview(lineChartView)
+        infoLabel.textColor = .white
+        view.addSubview(infoLabel)
+        infoLabel.edgesToSuperview()
+        infoLabel.textAlignment = .center
+        infoLabel.isHidden = true
+        infoLabel.text = "Charts for this crypto is unavaliable"
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
 //        lineChartView.centerInSuperview()
@@ -110,11 +117,16 @@ class ChartViewController: UIViewController {
         self.getXYLastWeek(symbol: symb,completion: {result in
             switch result {
             case .success(let coins):
+                self.loadIndicator.stopAnimating()
+                if (coins.count == 0) {
+                    self.infoLabel.isHidden = false
+                    return
+                }
                 var dayOfMonth = 1
 
-                self.loadIndicator.stopAnimating()
                 xyPairs.removeAll()
                 self.yValues.removeAll()
+                
                 for data in coins[0].priceData {
                     xyPairs.append((day: dayOfMonth, price: data.open))
                     dayOfMonth += 1
@@ -138,7 +150,7 @@ class ChartViewController: UIViewController {
                 let data = LineChartData(dataSet: set1)
                 data.setDrawValues(false)
                 self.lineChartView.data = data
-                self.lineChartView.animate(xAxisDuration: 1.5)
+                self.lineChartView.animate(xAxisDuration: 0.5)
 
                 
             case .failure(let error):
