@@ -22,7 +22,7 @@ class UserViewController: UIViewController {
         let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "sign_in")
         DispatchQueue.main.async {
-            self.tabBarController!.viewControllers![3]=vc
+            self.tabBarController!.viewControllers![2]=vc
         }
     }
     

@@ -7,11 +7,11 @@ class EmptyUserViewController: UIViewController {
             if needRegistration {
                 let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "sign_in")
-                self.tabBarController!.viewControllers![3]=vc
+                self.tabBarController!.viewControllers![2]=vc
             } else {
                 let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "profile") as! UserViewController
-                self.tabBarController!.viewControllers![3]=vc
+                self.tabBarController!.viewControllers![2]=vc
             }
         }
     }

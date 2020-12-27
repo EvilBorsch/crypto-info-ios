@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "main_user")
         DispatchQueue.main.async {
-            self.tabBarController!.viewControllers![3]=vc
+            self.tabBarController!.viewControllers![2]=vc
         }
     }
 
@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController {
     @IBAction func goToLoginClick(_ sender: Any) {
         let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "sign_in")
-        self.tabBarController!.viewControllers![3]=vc
+        self.tabBarController!.viewControllers![2]=vc
     }
     @IBAction func signUpButtonClick(_ sender: Any) {
         guard let email = EmailTextField.text else {

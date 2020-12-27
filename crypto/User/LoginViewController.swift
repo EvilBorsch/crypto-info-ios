@@ -9,7 +9,7 @@ class LoginViewController: UIViewController {
     @IBAction func clickRegitster(_ sender: Any) {
         let storyboard = UIStoryboard(name: "ProfileStoryBoard", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "sign_up")
-        self.tabBarController!.viewControllers![3]=vc
+        self.tabBarController!.viewControllers![2]=vc
     }
     
     var theme = 0
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "main_user")
             DispatchQueue.main.async {
-                self.tabBarController!.viewControllers![3]=vc
+                self.tabBarController!.viewControllers![2]=vc
             }
         }
         else{
