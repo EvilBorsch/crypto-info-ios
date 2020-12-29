@@ -18,18 +18,35 @@ class HomeViewController: UIViewController {
     
     var homeCellModels: [HomeCellModel] = []
     var homeCellModelsFiltered: [HomeCellModel] = []
+    var homeCellModelsCoins:[HomeCellModel] = []
+    var homeCellModelsTokens:[HomeCellModel] = []
     
     var settingsButton:UIBarButtonItem!
     
     func filterCells(by name: String) {
         homeCellModelsFiltered.removeAll()
         
-        homeCellModelsFiltered = homeCellModels.filter({ (model) -> Bool in
-            return model.name.lowercased().contains(name.lowercased())
-        })
+        if segment.selectedSegmentIndex == 1 {
+            homeCellModelsFiltered = homeCellModelsCoins.filter({ (model) -> Bool in
+                return model.name.lowercased().contains(name.lowercased())
+            })
+        }
+        else if segment.selectedSegmentIndex == 2 {
+            homeCellModelsFiltered = homeCellModelsTokens.filter({ (model) -> Bool in
+                return model.name.lowercased().contains(name.lowercased())
+            })
+        } else {
+            homeCellModelsFiltered = homeCellModels.filter({ (model) -> Bool in
+                return model.name.lowercased().contains(name.lowercased())
+            })
+        }
+        
+       
     }
     
+    
     var theme = 0
+    var segment: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +58,14 @@ class HomeViewController: UIViewController {
         search.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = search
         
+        
+        segment = UISegmentedControl(items: ["All", "Coins", "Tokens"])
+        segment.sizeToFit()
+        segment.selectedSegmentIndex = 0
+        segment.addTarget(self, action: #selector(segmentChange(sender:)), for: .valueChanged)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor:UIColor.white], for: .selected)
+        self.navigationItem.titleView = segment
+        
         tableView.refreshControl = self.refresh
         refresh.addTarget(self, action: #selector(refreshUpd(sender:)), for: .valueChanged)
         
@@ -48,9 +73,6 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "CryptoCell", bundle: nil), forCellReuseIdentifier: "CryptoCell")
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,11 +82,17 @@ class HomeViewController: UIViewController {
         
         navigationController?.navigationBar.tintColor = themeColor[theme]
         tabBarController?.tabBar.tintColor = themeColor[theme]
+        segment.selectedSegmentTintColor = themeColor[theme]
         
         tableView.reloadData()
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         
         loadInfo()
+    }
+    
+    @objc
+    func segmentChange(sender: UISegmentedControl) {
+        self.tableView.reloadData()
     }
     
     func loadInfo() {
@@ -73,6 +101,12 @@ class HomeViewController: UIViewController {
             switch res {
             case .success(let info):
                 self?.homeCellModels = info
+                self?.homeCellModelsCoins = info.filter({ (model) -> Bool in
+                    return model.category == "coin"
+                })
+                self?.homeCellModelsTokens = info.filter({ (model) -> Bool in
+                    return model.category == "token"
+                })
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
@@ -100,7 +134,14 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
         if isSearch() {
             return homeCellModelsFiltered.count
         } else {
-            return homeCellModels.count
+            if segment.selectedSegmentIndex == 1 {
+                return homeCellModelsCoins.count
+            }
+            if segment.selectedSegmentIndex == 2 {
+                return homeCellModelsTokens.count
+            } else {
+                return homeCellModels.count
+            }
         }
     }
     
@@ -131,6 +172,12 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
         if self.isSearch() {
             return self.homeCellModelsFiltered[index]
         } else {
+            if segment.selectedSegmentIndex == 1 {
+                return homeCellModelsCoins[index]
+            }
+            if segment.selectedSegmentIndex == 2 {
+                return homeCellModelsTokens[index]
+            }
             return self.homeCellModels[index]
         }
     }
