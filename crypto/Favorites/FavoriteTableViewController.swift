@@ -110,6 +110,9 @@ class FavoriteTableViewController: UITableViewController {
             cell.configure(with: cryptoInfo[indexPath.row])
         }
         
+        cell.symbol.textColor = themeColor[theme]
+        
+        
         return cell
     }
     
@@ -162,7 +165,7 @@ class FavoriteTableViewController: UITableViewController {
         
         let symbolConfig = UIImage.SymbolConfiguration(weight: .bold)
         
-        let favoriteDelete = UIContextualAction.init(style: .normal, title: "Remove from favorites", handler:{ (action, view, success) in
+        let favoriteDelete = UIContextualAction.init(style: .destructive, title: "Remove from favorites", handler:{ (action, view, success) in
             favoriteStocks = favoriteStocks.filter({(symbol) -> Bool in return symbol != currSymbol})
             
             UserDefaults.standard.set(favoriteStocks, forKey: self.key)

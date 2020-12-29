@@ -49,10 +49,7 @@ class HomeViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "CryptoCell", bundle: nil), forCellReuseIdentifier: "CryptoCell")
         
-        theme = UserDefaults.standard.integer(forKey: "theme")
         
-        navigationController?.navigationBar.tintColor = themeColor[theme]
-        tabBarController?.tabBar.tintColor = themeColor[theme]
         
     }
     
@@ -60,6 +57,9 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         theme = UserDefaults.standard.integer(forKey: "theme")
+        
+        navigationController?.navigationBar.tintColor = themeColor[theme]
+        tabBarController?.tabBar.tintColor = themeColor[theme]
         
         tableView.reloadData()
         navigationController?.navigationItem.largeTitleDisplayMode = .always
@@ -147,7 +147,9 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
                 success(true)
                 favoriteStocks = favoriteStocks.filter({(symbol) -> Bool in return symbol != currSymbol})
                 UserDefaults.standard.set(favoriteStocks, forKey: self.favKey)
-                tableView.reloadData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    tableView.reloadData()
+                })
             })
             favoriteDelete.image = UIImage(systemName: "star.slash.fill", withConfiguration: symbolConfig)
             favoriteDelete.backgroundColor = .systemRed
@@ -157,7 +159,10 @@ extension HomeViewController:UITableViewDataSource, UITableViewDelegate {
                 success(true)
                 favoriteStocks.append(currSymbol)
                 UserDefaults.standard.set(favoriteStocks, forKey: self.favKey)
-                tableView.reloadData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    tableView.reloadData()
+                })
+                
             })
             favoriteAdd.image = UIImage(systemName: "star.fill", withConfiguration: symbolConfig)
             favoriteAdd.backgroundColor = themeColor[theme]

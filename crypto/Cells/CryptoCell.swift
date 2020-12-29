@@ -17,11 +17,11 @@ class HomeCell: UITableViewCell {
     @IBOutlet weak var change: UILabel!
     @IBOutlet weak var changeView: UIView!
     
-    var fiatType:Int = 5
+    var fiatType:Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        fiatType = UserDefaults.standard.integer(forKey: "fiat")
         changeView.layer.cornerRadius = 10
         changeView.layer.masksToBounds = true
     }
@@ -33,6 +33,7 @@ class HomeCell: UITableViewCell {
     func configure(with model: HomeCellModel) {
         icon.kf.indicatorType = .activity
         icon.kf.setImage(with: model.logoURL)
+        fiatType = UserDefaults.standard.integer(forKey: "fiat")
         name.text = model.name
         cost.text = String(format: "%.2f \(model.cost[fiatType].sign)", model.cost[fiatType].price)
         symbol.text = model.symbol
