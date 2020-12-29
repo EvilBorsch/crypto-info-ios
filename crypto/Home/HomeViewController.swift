@@ -53,6 +53,9 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Cryptoes"
         
+        if (UserDefaults.standard.object(forKey: "fiat") == nil) {
+            UserDefaults.standard.set(5, forKey: "fiat")
+        }
         
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
